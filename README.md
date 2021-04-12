@@ -1,1 +1,1 @@
-# albuana-share-pictures-app
+# share-pictures-app
