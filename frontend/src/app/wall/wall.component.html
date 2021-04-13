@@ -9,3 +9,9 @@
         <h2>Nickname: {{user.nickname | uppercase}}</h2>
     </li>
 </ul>
+
+<ul class="posts">
+    <li *ngFor="let post of posts">
+        <h2>Title: {{post.title | uppercase}} userId: {{post.user | uppercase}}</h2>
+    </li>
+</ul>
