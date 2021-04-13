@@ -60,10 +60,9 @@ export class LoginComponent implements OnInit {
         if (this.users[i].password == this.log_password) {
           flag = true;
           alert("O Utilizador autenticou-se com sucesso.");
-          //Em caso de sucesso na autenticação o utilizador deve ser levado para um ecrã que mostra as 
-          //fotografias que carregou para a plataforma no passado, ou, se não tiver carregado nenhuma, 
-          //para o ecrã com as fotografias mais recentes na plataforma
-          this.Router.navigate(['/wall'], { state: { nickname: this.user.nickname } });
+
+          console.log(this.users[i]);
+          this.Router.navigate(['/wall'], { state: { nickname: this.users[i].nickname } });
         }
       }
     }

@@ -34,7 +34,23 @@ export class ProfileComponent implements OnInit {
     this.userService.getUser(id)
       .subscribe(user => {
         this.user = user;
+        this.getPosts();
       })
+  }
+
+  toProfile(): void {
+    this.router.navigate(['/wall'], { state: { nickname: this.user.nickname } });
+  }
+
+  getPosts(): void {
+    this.postService.getPostsByUser(this.user._id)
+      .subscribe(posts => {
+        this.posts = posts;
+      })
+  }
+
+  removePost(id:string){
+    this.postService.deletePost(id).subscribe(post => this.getPosts());
   }
 
 }

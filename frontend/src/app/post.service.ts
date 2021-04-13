@@ -45,7 +45,7 @@ export class PostService {
       catchError(this.handleError<Post>('addPost'))
     );
   }
-  deletePost(id : string): Observable<Post[]> {
+  deletePost(id : string): Observable<Post[]>{
     const url = `${this.url}/${id}`;
     return this.http.delete<Post[]>(url);
   }

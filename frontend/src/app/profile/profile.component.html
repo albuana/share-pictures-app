@@ -1,1 +1,45 @@
-<p>profile works!</p>
+<mat-toolbar color="primary">
+	<span>Profile of {{user.nickname}} </span>
+	<section>
+		<button mat-fab color="warn" (click)="toProfile()">
+			Wall
+		</button>
+	</section>
+</mat-toolbar>
+
+<section id="container">
+
+	<section id="userInfo">
+
+		<h3>Username: {{user.nickname}}</h3>
+		<h3>UserID: {{user._id}}</h3>
+		<h3>Numero De Posts: {{posts.length}}</h3>
+
+	</section>
+
+	<section id="Posts">
+
+		<div class="content">
+			<div fxLayout="row wrap" fxLayoutGap="16px grid">
+				<div *ngFor="let post of posts">
+					<mat-card class="mat-elevation-z4">
+						<mat-card-header>
+							<mat-card-title>{{post.title}}</mat-card-title>
+						</mat-card-header>
+						<img mat-card-image [src]="post.photo" />
+						<mat-card-content>
+							<p>
+								{{post.description}}
+							</p>
+						</mat-card-content>
+						<mat-card-actions>
+							<button mat-button (click)="removePost(post._id)">REMOVE</button>
+						</mat-card-actions>
+					</mat-card>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+</section>
