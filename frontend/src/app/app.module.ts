@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,13 +15,16 @@ import { RouterModule } from '@angular/router';
 import { UserService} from '../app/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { WallComponent } from './wall/wall.component';
-
+import { DemoMaterialModule } from "./material-module";
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    WallComponent
+    WallComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,8 @@ import { WallComponent } from './wall/wall.component';
     MatIconModule,
     FormsModule,
     HttpClientModule,
+    DemoMaterialModule,
+    FlexLayoutModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -44,6 +48,10 @@ import { WallComponent } from './wall/wall.component';
       {
         path: 'wall',
         component: WallComponent
+      },
+      {
+        path: 'profile/:id',
+        component: ProfileComponent
       }
     ])
 

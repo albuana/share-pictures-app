@@ -11,7 +11,12 @@ import { UserService } from '../user.service';
   styleUrls: ['./wall.component.css']
 })
 export class WallComponent implements OnInit {
-  user: User | undefined;
+  user: User = {
+    authenticated: false,
+    _id: "",
+    nickname: "",
+    password: "",
+  };
   users: User[] = [];
   posts: Post[] = [];
   constructor(private router: Router, private userService: UserService, private postService: PostService) { 
@@ -44,6 +49,9 @@ export class WallComponent implements OnInit {
       .subscribe(posts => {
         this.posts = posts;
       })
+  }
+  toProfile(): void {
+    this.router.navigate(['profile',this.user._id], {state: {id:this.user._id}});
   }
 }
 
