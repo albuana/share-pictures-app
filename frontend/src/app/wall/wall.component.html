@@ -1,0 +1,11 @@
+<p>wall works!</p>
+
+<div *ngIf="user">
+    <h2>{{user.nickname | uppercase}} Nickname</h2>
+</div>
+
+<ul class="users">
+    <li *ngFor="let user of users">
+        <h2>Nickname: {{user.nickname | uppercase}}</h2>
+    </li>
+</ul>

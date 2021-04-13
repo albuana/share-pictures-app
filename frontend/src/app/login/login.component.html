@@ -1,0 +1,42 @@
+<div id="form">
+  <mat-card class="example-card">
+    <mat-tab-group mat-align-tabs="center">
+      <mat-tab label="Login">
+
+        <mat-form-field class="example-full-width formfield">
+          <mat-label>Username</mat-label>
+          <input required type="email" matInput placeholder="Username" value="" [(ngModel)]="log_username">
+          <mat-icon matSuffix>account_box</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width formfield">
+          <mat-label>Password</mat-label>
+          <input required type="password" matInput placeholder="Password" value="" [(ngModel)]="log_password">
+          <mat-icon matSuffix>vpn_key</mat-icon>
+        </mat-form-field>
+
+        <button class="botaoLR" mat-raised-button color="primary" (click)="login()">Login</button>
+
+      </mat-tab>
+      <mat-tab label="SignUp">
+
+        <mat-form-field class="example-full-width formfield formfield">
+          <mat-label matSuffix>Username</mat-label>
+          <input required type="email" matInput placeholder="" value="Username" [(ngModel)]="reg_username">
+          <mat-icon matSuffix>account_box</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label matSuffix>Password</mat-label>
+          <input required type="password" matInput placeholder="" value="Password" [(ngModel)]="reg_password">
+          <mat-icon matSuffix>vpn_key</mat-icon>
+        </mat-form-field>
+        <button class="botaoLR" mat-raised-button color="primary" (click)="SignUp()">Register</button>
+
+      </mat-tab>
+    </mat-tab-group>
+
+
+  </mat-card>
+
+</div>
