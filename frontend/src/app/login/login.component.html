@@ -2,16 +2,19 @@
   <mat-card class="example-card">
     <mat-tab-group mat-align-tabs="center">
       <mat-tab label="Login">
-
-        <mat-form-field class="example-full-width formfield">
-          <mat-label>Username</mat-label>
-          <input required type="email" matInput placeholder="Username" value="" [(ngModel)]="log_username">
+        
+        <mat-form-field class="example-full-width formfield" appearance="fill">
+          <mat-label matSuffix>Username</mat-label>
+          <input matInput placeholder="Username" [(ngModel)]="log_username" required>
+          <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
           <mat-icon matSuffix>account_box</mat-icon>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width formfield">
+        <mat-form-field class="example-full-width formfield" appearance="fill">
           <mat-label>Password</mat-label>
-          <input required type="password" matInput placeholder="Password" value="" [(ngModel)]="log_password">
+          <input matInput #input type="password" placeholder="" value="Password" [(ngModel)]="log_password" required>
+          <!-- <mat-hint align="end">{{input.value?.length || 8}}/100</mat-hint> -->
+          <mat-error *ngIf="input">{{getErrorMessage2()}}</mat-error>
           <mat-icon matSuffix>vpn_key</mat-icon>
         </mat-form-field>
 
@@ -20,14 +23,14 @@
       </mat-tab>
       <mat-tab label="SignUp">
 
-        <mat-form-field class="example-full-width formfield formfield">
+        <mat-form-field class="example-full-width formfield formfield" hintLabel="O seu username tem de conter 3 ou mais carateres dos quais só podem ser letras ou algarismos." appearance="fill">
           <mat-label matSuffix>Username</mat-label>
-          <input required type="email" matInput placeholder="" value="Username" [(ngModel)]="reg_username">
+          <input required type="username" matInput placeholder="" value="Username" [(ngModel)]="reg_username">
           <mat-icon matSuffix>account_box</mat-icon>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
-          <mat-label matSuffix>Password</mat-label>
+        <mat-form-field class="example-full-width"hintLabel="A sua palavra-passe tem de conter 8 ou mais carateres, uma letra maiúscula, uma minúscula e um numero." appearance="fill">
+          <mat-label>Password</mat-label>
           <input required type="password" matInput placeholder="" value="Password" [(ngModel)]="reg_password">
           <mat-icon matSuffix>vpn_key</mat-icon>
         </mat-form-field>
