@@ -69,18 +69,23 @@ export class LoginComponent implements OnInit {
 
   login() {
     let flag = false;
+    //Para se autenticar o utilizador deve usar o nickname e password fornecidos durante o processo de registo
     for (let i = 0; i < this.users.length; i++) {
       if (this.users[i].nickname == this.log_username) {
         if (this.users[i].password == this.log_password) {
           flag = true;
           alert("O Utilizador autenticou com sucesso");
+          //Em caso de sucesso na autenticação o utilizador deve ser levado para um ecrã 
+          //que mostra as fotografias que carregou para a plataforma no passado, ou, se não tiver carregado nenhuma, 
+          //para o ecrã com as fotografias mais recentes na plataforma
           this.Router.navigate(['/wall'], {state: {nickname:this.user.nickname}});
         }
       }
     }
 
+    //Em caso de falha na autenticação, a mensagem de erro não deve permitir saber se o nickname existe no sistema
     if (!flag)
-      alert("O User não existe ou password errada");
+      alert("Os dados do login estão incorretos. Por favor, tente novamente.");
   }
 
   getUsers(): void {
