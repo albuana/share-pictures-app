@@ -41,9 +41,32 @@ svg {
 
 .content {
   padding: 16px;
+  text-align: -webkit-center;
 }
 
 /* Right-aligned section inside the top navigation */
 .topnav-right {
   float: right;
+}
+
+
+.mat-card {
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* display: block; */
+  position: relative;
+  padding: 16px;
+  max-width: 500px;
+  border-radius: 7px;
+}
+
+.mat-card-image {
+  width: calc(100% + 32px);
+  margin: 0 -16px 16px -16px;
+}
+
+.div{
+  flex-flow: row wrap;
+  box-sizing: border-box;
+  display: flex;
+  margin: 0px -16px -16px 0px;
 }
