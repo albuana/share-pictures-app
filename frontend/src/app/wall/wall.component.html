@@ -1,14 +1,21 @@
-<mat-toolbar color="primary">
-	<span>Photos Feed</span>
-	<section>
+<!-- <mat-toolbar color="primary">
+	<div>
 		<button class="btt"color="warn" (click)="toProfile()">
 			Profile
 		</button>
 		<button class="btt"color="warn">
 			wall
 		</button>
-	</section>
-</mat-toolbar>
+	</div>
+
+	
+</mat-toolbar> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="navbar">
+	<a class="active">Feed <i class="fa fa-fw fa-home"></i></a>
+	<a (click)="toProfile()"> Profile <i class="fa fa-fw fa-user"></i> </a>
+  </div>
 <div class="content">
 	<div fxLayout="row wrap" fxLayoutGap="16px grid">
 		<div *ngFor="let post of posts">
