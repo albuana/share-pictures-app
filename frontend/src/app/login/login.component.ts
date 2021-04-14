@@ -36,8 +36,6 @@ export class LoginComponent implements OnInit {
   }
 
   SignUp() {
-    // let flag = this.userVerify();
-    // let flag2 = this.passVerify();
 
     if(this.userVerify() == true && this.passVerify() == true){
       this.user.password = this.reg_password;
@@ -49,7 +47,6 @@ export class LoginComponent implements OnInit {
 
       this.Router.navigate(['/wall'], { state: { nickname: this.user.nickname } });
     }
-    this.Router.navigate(['/login']);
   }
 
   login() {
@@ -61,7 +58,7 @@ export class LoginComponent implements OnInit {
           flag = true;
           alert("O Utilizador autenticou-se com sucesso.");
 
-          console.log(this.users[i]);
+          
           this.Router.navigate(['/wall'], { state: { nickname: this.users[i].nickname } });
         }
       }
@@ -165,6 +162,12 @@ export class LoginComponent implements OnInit {
       return false;
     }
 
+    for(let i = 0; i<Array.from(this.reg_username).length; i++){
+      if(!this.validCharacter(this.reg_username.charAt(i))){
+        alert("O username tem de conter apenas letras ou numeros");
+        return false;
+      }
+    }
 
     for (let i = 0; i < this.users.length; i++) {
       //Se o utilizador tentar registar um nickname que já existe, a mensagem de erro deve indicá-lo claramente
@@ -172,9 +175,23 @@ export class LoginComponent implements OnInit {
         alert("O username " + this.reg_username +  " já está a ser utilizado. Por favor escolha outro.");
         return false;
       }
+
+
     }
     return flag;
   }
+
+  validCharacter(a:string):boolean{
+
+    if(a.toLowerCase() == a &&  a.toUpperCase() == a){
+      if(!(a == "0" || a == "1"|| a == "2"|| a == "3"|| a == "4"|| a == "5"|| a == "6"|| a == "7"|| a == "8"|| a == "9")){
+        return false;
+      }
+    }
+
+      return true;
+  }
+
 
 }
 
