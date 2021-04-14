@@ -5,5 +5,22 @@ mat-toolbar {
   .content {
     padding: 16px;
   }
+
+  .btt {
+    background-color: #4c7faf; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  .btt:last-of-type{
+    background-color: green;
+  }
   
   
