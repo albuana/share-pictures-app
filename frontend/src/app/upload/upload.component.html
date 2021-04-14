@@ -27,7 +27,7 @@
             </ngx-mat-file-input>
         </mat-form-field>
 
-        <button class="botaoLR" mat-raised-button color="primary" (click)="upload()">Confirmar</button>
+        <button class="botaoLR" mat-raised-button color="primary" (click)="upload()" [disabled]="!available">Confirmar</button>
 
         </mat-tab>
     
