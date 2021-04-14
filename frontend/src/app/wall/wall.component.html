@@ -1,9 +1,20 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
 
 <div class="navbar">
 	<a class="active">Feed <i class="fa fa-fw fa-home"></i></a>
-	<a (click)="toProfile()"> {{user.nickname}} <i class="fa fa-fw fa-user"></i> </a>
-	<a (click)="toUpload()"> Upload <i class="fa fa-fw fa-user"></i> </a>
+	<a (click)="toProfile()"> {{user.nickname}} 
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
+			<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+			<path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
+		  </svg>
+	</a>
+	<a (click)="open(content)"> Upload
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+			<path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+		  </svg>
+	</a>
 	<div class="topnav-right">
 		<a (click)="logout()">Logout <i class="fa fa-fw fa-share"></i></a>
 	</div>
@@ -11,55 +22,49 @@
 <div class="content">
 	<div fxLayout="row wrap" fxLayoutGap="16px grid">
 		<ng-template #content let-modal>
-			<div class="modal-header">
-				<h4 class="modal-title" 
-					id="modal-basic-title">
-					Geeks of Geeks
-				</h4>
-				<button type="button" class="close"
-						aria-label="Close" (click)=
-						"modal.dismiss('Cross click')">
-		  
-					<span aria-hidden="true">
-						×
-					</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<form>
-					<div class="form-group">
-						<label for="dateOfBirth">
-							Date of birth
-						</label>
-						<div class="input-group">
-							<input id="dateOfBirth" 
-								class="form-control" 
-								placeholder="yyyy-mm-dd" 
-								name="dp" ngbDatepicker
-								#dp="ngbDatepicker">
-		  
-							<div class="input-group-append">
-								<button class="btn 
-									btn-outline-secondary calendar"
-									(click)="dp.toggle()"
-									type="button">
-								</button>
-							</div>
+			<!-- <div mat-dialog-actions> -->
+				<mat-card class="example-card">
+					<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+						<span aria-hidden="true">
+							×
+						</span>
+        			</button>
+					<mat-tab-group mat-align-tabs="center">
+					  <mat-tab label="Upload">
+						<!-- <h2 class="modal-title" style="text-align:center;">Upload</h2> -->
+						<div>
+							<mat-form-field class="example-full-width formfield" appearance="fill">
+							<mat-label matSuffix>Title</mat-label>
+								<input matInput placeholder="Title" [(ngModel)]="title" required>
+							</mat-form-field>
 						</div>
-					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" 
-					class="btn btn-outline-dark" 
-					(click)="modal.close('Save click')">
-					Save
-				</button>
-			</div>
+
+						<div>
+							<mat-form-field class="example-full-width formfield" appearance="fill">
+							<mat-label>Description</mat-label>
+							<input matInput #input placeholder="Description" [(ngModel)]="description">
+							</mat-form-field>
+			  			</div>
+
+						<div class="row" >
+							<mat-form-field class="example-full-width formfield" appearance="fill">
+							<mat-label>Photo</mat-label>
+							<ngx-mat-file-input #imageInput type="file" accept="image/*" (change)="processFile()">
+							</ngx-mat-file-input>
+							</mat-form-field>
+						</div>
+			  
+					  	<button class="botaoLR" mat-raised-button color="primary" (click)="upload()" [disabled]="!available">Confirmar</button>
+
+					  </mat-tab>
+				  
+					</mat-tab-group>
+				
+				
+				  </mat-card>
+			<!-- </div> -->
+			
 		</ng-template>
-		<button class="btn btn-lg btn-outline-primary" (click)="open(content)">
-    			Popup using Angular and Bootstrap
-		</button>
 		<div *ngFor="let post of posts">
 			<mat-card class="mat-elevation-z4" id="cena">
 				<mat-card-header>

@@ -22,8 +22,16 @@ export class WallComponent implements OnInit {
   };
   users: User[] = [];
   posts: Post[] = [];
+
+  title: string = "";
+  description: string = "";
+  photo: string = "";
+  fileName:string = "";
+
   closeResult = '';
 
+  flagConfirm: boolean = false;
+  available: boolean = false;
 
   constructor(private router: Router, private userService: UserService, private postService: PostService, private modalService: NgbModal) { 
     const navigation = this.router.getCurrentNavigation();
@@ -70,7 +78,7 @@ export class WallComponent implements OnInit {
 
   open(content: any) {
     this.modalService.open(content,
-   {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+   {ariaLabelledBy: 'modal-basic-title', centered : true}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = 
@@ -87,6 +95,57 @@ export class WallComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+
+
+
+  processFile() {
+    const file = (event!.target as HTMLInputElement).files!;
+    const Reader = new FileReader();
+    this.fileName = file[0].name;
+    this.available = true;
+    Reader.readAsDataURL(file[0]);
+    Reader.onload = () => {
+      this.photo = Reader.result as string;
+    }
+
+  }
+
+  upload() {
+    if (this.title.length == 0) {
+      this.title = this.fileName;
+    }
+
+    if (this.title.length > 100) {
+      alert("O titulo é muito grande");
+      return;
+    }
+
+    if (this.description.length > 500) {
+      alert("A descricao é muito grande");
+      return;
+    }
+
+    if (this.description.length == 0 && this.flagConfirm == false) {
+      alert("A foto nao tem descricao, clique confirmar para confirmar");
+      this.flagConfirm = true;
+      return;
+    }
+
+    if (this.description.length == 0 && this.flagConfirm == true) {
+      this.postService.addPost({ title: this.title, description: this.description, photo: this.photo, user: this.user._id } as Post).subscribe(() => this.toWall());
+
+    }else{
+
+
+    this.postService.addPost({ title: this.title, description: this.description, photo: this.photo, user: this.user._id } as Post).subscribe(() => this.toWall());
+    }
+  }
+
+
+  toWall(): void {
+    this.router.navigate(['/wall'], { state: { nickname: this.user.nickname } });
+  }
+
 
 
 

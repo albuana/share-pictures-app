@@ -1,7 +1,15 @@
+svg {
+  overflow: hidden;
+  vertical-align: text-top;
+}
+ 
+ /* Style the navigation bar */
 .navbar {
   width: 100%;
   background-color:white;
   overflow: auto;
+  display: block;
+  padding: 0px;
 }
 
 /* Navbar links */
@@ -13,7 +21,6 @@
   text-decoration: none;
   font-size: 17px;
 }
-
 /* Navbar links on mouse-over */
 .navbar a:hover {
   background-color: #5b68c5;
