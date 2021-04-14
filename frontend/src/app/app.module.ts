@@ -61,6 +61,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         path: 'upload',
         component: UploadComponent
       },
+      {
+        path: 'login',
+        component: LoginComponent
+      }
     ]),
     NgbModule
 
