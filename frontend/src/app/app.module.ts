@@ -20,6 +20,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProfileComponent } from './profile/profile.component';
 import { UploadComponent } from './upload/upload.component';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +61,8 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
         path: 'upload',
         component: UploadComponent
       },
-    ])
+    ]),
+    NgbModule
 
     
   ],
