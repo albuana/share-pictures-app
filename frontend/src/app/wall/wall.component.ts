@@ -53,5 +53,9 @@ export class WallComponent implements OnInit {
   toProfile(): void {
     this.router.navigate(['profile',this.user._id], {state: {id:this.user._id}});
   }
+
+  logout(): void {
+    this.router.navigate(['login']);
+  }
 }
 

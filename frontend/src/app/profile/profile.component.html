@@ -1,11 +1,10 @@
-<mat-toolbar color="primary">
-	<span>Profile of {{user.nickname}} </span>
-	<section>
-		<button mat-fab color="warn" (click)="toProfile()">
-			Wall
-		</button>
-	</section>
-</mat-toolbar>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="navbar">
+	<a (click)="logout()">logout <i class="fa fa-fw fa-share"></i></a>
+	<a (click)="toWall()"> Wall <i class="fa fa-fw fa-home"></i> </a>
+  </div>
+<div class="content">
 
 <section id="container">
 

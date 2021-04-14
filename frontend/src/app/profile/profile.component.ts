@@ -38,8 +38,12 @@ export class ProfileComponent implements OnInit {
       })
   }
 
-  toProfile(): void {
+  toWall(): void {
     this.router.navigate(['/wall'], { state: { nickname: this.user.nickname } });
+  }
+
+  logout(): void {
+    this.router.navigate(['login']);
   }
 
   getPosts(): void {

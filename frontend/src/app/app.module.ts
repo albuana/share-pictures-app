@@ -52,6 +52,10 @@ import { ProfileComponent } from './profile/profile.component';
       {
         path: 'profile/:id',
         component: ProfileComponent
+      },
+      {
+        path: 'login',
+        component: LoginComponent
       }
     ])
 
