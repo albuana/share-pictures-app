@@ -57,5 +57,9 @@ export class WallComponent implements OnInit {
   logout(): void {
     this.router.navigate(['login']);
   }
+
+  toUpload(): void {
+    this.router.navigate(['upload'], {state: {id:this.user._id}});
+  }
 }
 

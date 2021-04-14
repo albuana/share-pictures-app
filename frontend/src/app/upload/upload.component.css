@@ -1,0 +1,75 @@
+.mat-card {
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    position: relative;
+    padding: 16px;
+    border-radius: 20px;
+    max-width: 500px;
+  }
+  
+  
+  #form {
+    text-align: -webkit-center;
+    margin-top: 15%;
+  }
+  
+  
+  .example-form {
+    min-width: 150px;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+    margin-top: 30px;
+  }
+  
+  .example-full-width:last-of-type {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .botaoLR {
+    margin-top: 15px;
+    width: 150px;
+  }
+
+    /* Style the navigation bar */
+.navbar {
+  width: 100%;
+  background-color:white;
+  overflow: auto;
+}
+
+/* Navbar links */
+.navbar a {
+  float: left;
+  text-align: center;
+  padding: 12px;
+  color: black;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Navbar links on mouse-over */
+.navbar a:hover {
+  background-color: #5b68c5;
+}
+
+/* Current/active navbar link */
+.active {
+  background-color: rgb(246, 246, 246);;
+}
+
+/* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+
+.content {
+  padding: 16px;
+}

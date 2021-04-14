@@ -18,13 +18,15 @@ import { WallComponent } from './wall/wall.component';
 import { DemoMaterialModule } from "./material-module";
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProfileComponent } from './profile/profile.component';
-
+import { UploadComponent } from './upload/upload.component';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     WallComponent,
     ProfileComponent,
+    UploadComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,7 @@ import { ProfileComponent } from './profile/profile.component';
     HttpClientModule,
     DemoMaterialModule,
     FlexLayoutModule,
+    MaterialFileInputModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -54,9 +57,9 @@ import { ProfileComponent } from './profile/profile.component';
         component: ProfileComponent
       },
       {
-        path: 'login',
-        component: LoginComponent
-      }
+        path: 'upload',
+        component: UploadComponent
+      },
     ])
 
     
