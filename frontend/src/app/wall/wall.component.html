@@ -61,15 +61,15 @@
     			Popup using Angular and Bootstrap
 		</button>
 		<div *ngFor="let post of posts">
-			<mat-card class="mat-elevation-z4">
+			<mat-card class="mat-elevation-z4" id="cena">
 				<mat-card-header>
 					<mat-card-title>{{post.title}}</mat-card-title>
-				</mat-card-header>
-				<img mat-card-image [src]="post.photo" />
+				</mat-card-header >
+				<img id="cena2" mat-card-image [src]="post.photo" />
 				<mat-card-content>
-					<p>
+					<section>
 						{{post.description}}
-					</p>
+					</section>
 				</mat-card-content>
 				<mat-card-actions>
 					<button mat-button>LIKE</button>
