@@ -22,9 +22,9 @@ export class PostService {
     console.log(this.http.get<Post[]>(this.url));
     return this.http.get<Post[]>(this.url);
   }
-  getPost(id : string): Observable<Post[]> {
+  getPost(id : string): Observable<Post> {
     const url = `${this.url}/${id}`;
-    return this.http.get<Post[]>(url);
+    return this.http.get<Post>(url);
   }
   getRecentPosts(): Observable<Post[]> {
     const url = `${this.url}/recent`;

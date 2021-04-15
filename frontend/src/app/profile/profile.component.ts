@@ -21,8 +21,22 @@ export class ProfileComponent implements OnInit {
   };
   posts: Post[] = [];
 
+  postToShow: Post = {
+    _id:"",
+    title:"",
+    description:"",
+    likes:0,
+    user: "", //id não nickname
+    date:new Date,
+    photo:""
+  }
   closeResult = '';
+  removeFlag:boolean = false;
+  titleToShow:string ="";
+  descriptionToShow:string ="";
 
+  idToShow:string = "";
+  
 
   constructor(private router: Router, private userService: UserService, private postService: PostService, private modalService: NgbModal) { 
     const navigation = this.router.getCurrentNavigation();
@@ -60,7 +74,15 @@ export class ProfileComponent implements OnInit {
   }
 
   removePost(id:string){
+    if(!this.removeFlag){
+      alert("De certeza que quer remover a foto?\nClique de novo em Remover")
+      this.removeFlag = true;
+
+    }else{
+    console.log(id);
     this.postService.deletePost(id).subscribe(post => this.getPosts());
+    this.removeFlag = false;
+    }
   }
 
 
@@ -74,6 +96,10 @@ export class ProfileComponent implements OnInit {
     });
   }
   
+  mostraFoto(content: any, id:string){
+    this.postService.getPost(id).subscribe(post => this.postToShow = post);
+    this.open(content);
+  }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
