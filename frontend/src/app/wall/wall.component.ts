@@ -7,6 +7,7 @@ import { UserService } from '../user.service';
 
 import {NgbModal, ModalDismissReasons} 
       from '@ng-bootstrap/ng-bootstrap';
+import { state } from '@angular/animations';
 
 @Component({
   selector: 'app-wall',
@@ -36,11 +37,19 @@ export class WallComponent implements OnInit {
 
   constructor(private router: Router, private userService: UserService, private postService: PostService, private modalService: NgbModal) { 
     const navigation = this.router.getCurrentNavigation();
-    console.log(navigation?.extras.state)
-    const state = navigation?.extras.state as {
-      nickname: string,
-    };
-    this.getUserByNickname(state.nickname);
+    console.log(localStorage.getItem('nickname')+ "Nickname");
+    if(localStorage.getItem('nickname')){
+      console.log("Entra");
+      this.getUserByNickname(localStorage.getItem('nickname')!);
+
+    }
+    else{
+      const state = navigation?.extras.state as {
+        nickname: string,
+      };
+      this.getUserByNickname(state.nickname);
+    }
+
   }
 
   ngOnInit(): void {
@@ -51,6 +60,7 @@ export class WallComponent implements OnInit {
     this.userService.getUserByNickname(nickname)
       .subscribe(user => {
         this.user = user[0];
+        localStorage.setItem('nickname', user[0].nickname);
       })
   }
   getUsers(): void {
