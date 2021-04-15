@@ -52,10 +52,11 @@
 							</ngx-mat-file-input>
 							</mat-form-field>
 						</div>
-			  
+						<div>
 						<img src={{photo}} style=" border: 1px solid #ddd; /* Gray border */
 						border-radius: 4px;  /* Rounded border */
 						width: 150px; /* Set a small width */">
+						</div>
 					  	<button class="botaoLR" mat-raised-button color="primary" (click)="upload()" [disabled]="!available" (click)="flagConfirm == false ? modal.close() : false">Confirmar</button>
 
 					  </mat-tab>

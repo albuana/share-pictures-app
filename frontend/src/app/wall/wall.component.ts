@@ -34,6 +34,7 @@ export class WallComponent implements OnInit {
   flagConfirm: boolean = false;
   available: boolean = false;
   isRecent: boolean = false;
+  dialog: any;
 
 
   constructor(private router: Router, private userService: UserService, private postService: PostService, private modalService: NgbModal) { 
@@ -118,6 +119,8 @@ export class WallComponent implements OnInit {
 
   }
 
+
+
   upload() {
     if (this.title.length == 0) {
       this.title = this.fileName;
@@ -134,7 +137,7 @@ export class WallComponent implements OnInit {
     }
 
     if (this.description.length == 0 && this.flagConfirm == false) {
-      alert("A foto nao tem descricao, clique confirmar para confirmar");
+      alert("Parece que não colocou descrição na sua foto.\nPretende proceder?");
       this.flagConfirm = true;
       return;
     }
@@ -176,5 +179,13 @@ export class WallComponent implements OnInit {
 
 
 
+}
+
+function DialogContentExampleDialog(DialogContentExampleDialog: any) {
+  throw new Error('Function not implemented.');
+}
+
+function openDialog() {
+  throw new Error('Function not implemented.');
 }
 

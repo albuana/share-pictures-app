@@ -33,7 +33,7 @@
 
 
 				<div class="column wrap" fxLayoutGap="30px grid" style="width:100%">
-					<ng-template #content let-modal>
+					<!-- <ng-template #content let-modal>
 						<button id="cruz" type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
 							<span aria-hidden="true">
 								×
@@ -54,7 +54,29 @@
 							</mat-card-actions>
 						</mat-card>
 
-					</ng-template>
+					</ng-template> -->
+
+					<ng-template #content let-modal>
+
+					<div class="fotos">
+							<!-- <div class="column"> -->
+			
+								<mat-card class="mat-elevation-z4" style="align-content: center; margin-right: auto; margin-left: auto;">
+									<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+										<span aria-hidden="true">
+											×
+										</span>
+									</button>
+									<div mat-card-title class="card" >{{postToShow.title}}</div>
+									<img mat-card-image [src]="postToShow.photo" />
+									<div class="card" >{{postToShow.description}}</div>
+									<button mat-button (click)="removePost(postToShow._id)">REMOVE</button>
+								</mat-card>
+			
+							<!-- </div> -->
+						</div>
+				</ng-template>
+
 
 					<div class="foto">
 						<div class="row">
