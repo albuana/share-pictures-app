@@ -28,7 +28,7 @@ export class WallComponent implements OnInit {
   description: string = "";
   photo: string = "";
   fileName:string = "";
-
+  limit: number = 50;
   closeResult = '';
 
   flagConfirm: boolean = false;
@@ -55,6 +55,9 @@ export class WallComponent implements OnInit {
   ngOnInit(): void {
     this.getUsers();
     this.getPosts();
+  }
+  viewMore(): void {
+    this.limit=this.limit+50;
   }
   getUserByNickname(nickname: string): void {
     this.userService.getUserByNickname(nickname)
