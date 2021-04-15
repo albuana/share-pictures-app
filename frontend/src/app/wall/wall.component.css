@@ -183,6 +183,10 @@ img[_ngcontent-fxn-c187] {
   text-align: center;
 }
 
+.mat-card>:last-child:not(.mat-card-footer), .mat-card-content>:last-child:not(.mat-card-footer) {
+  margin-bottom: -1px;
+}
+
 .mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
   box-sizing: border-box;
   position: relative;
