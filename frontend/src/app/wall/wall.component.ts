@@ -97,8 +97,6 @@ export class WallComponent implements OnInit {
     }
   }
 
-
-
   processFile() {
     const file = (event!.target as HTMLInputElement).files!;
     const Reader = new FileReader();
@@ -133,12 +131,12 @@ export class WallComponent implements OnInit {
     }
 
     if (this.description.length == 0 && this.flagConfirm == true) {
-      this.postService.addPost({ title: this.title, description: this.description, photo: this.photo, user: this.user._id } as Post).subscribe(() => this.toWall());
+      this.postService.addPost({ title: this.title, description: this.description, photo: this.photo, user: this.user._id } as Post).subscribe(() => this.getPosts());
       this.flagConfirm = false;
     }else{
 
 
-    this.postService.addPost({ title: this.title, description: this.description, photo: this.photo, user: this.user._id } as Post).subscribe(() => this.toWall());
+    this.postService.addPost({ title: this.title, description: this.description, photo: this.photo, user: this.user._id } as Post).subscribe(() => this.getPosts());
     this.flagConfirm = false;
   }
   }

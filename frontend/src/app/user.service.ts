@@ -49,6 +49,14 @@ export class UserService {
       catchError(this.handleError<User>('addUser'))
     );
   }
+  update(user: User): Observable<User> {
+    const url = `${this.url}/${user._id}`;
+    console.log(user);
+    return this.http.put<User>(url, user, this.httpOptions).pipe(
+      tap((user: User) => console.log(`added user w/ id=${user}`)),
+      catchError(this.handleError<User>('addUser'))
+    );
+  }
 
   
 }
