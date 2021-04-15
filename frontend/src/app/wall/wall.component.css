@@ -46,17 +46,6 @@
 }
 
 
-#cena{
-  max-width: 350px;
-  max-height: 450px;
-}
-
-#cena2{
-  max-width: 200px;
-  max-height: 300px;
-}
-
-
 .mat-card {
   transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
   /* display: block; */
