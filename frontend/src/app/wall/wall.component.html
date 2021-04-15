@@ -1,7 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-
-
 <div class="navbar">
 	<a class="active">Feed <i class="fa fa-fw fa-home"></i></a>
 	<a (click)="toProfile()"> {{user.nickname}} 
@@ -43,14 +41,12 @@
 								<input matInput placeholder="Title" [(ngModel)]="title" required>
 							</mat-form-field>
 						</div>
-
 						<div>
 							<mat-form-field class="example-full-width formfield" appearance="fill">
 							<mat-label>Description</mat-label>
 							<input matInput #input placeholder="Description" [(ngModel)]="description">
 							</mat-form-field>
 			  			</div>
-
 						<div>
 							<mat-form-field class="example-full-width formfield" appearance="fill">
 							<mat-label>Photo</mat-label>
@@ -58,6 +54,7 @@
 							</ngx-mat-file-input>
 							</mat-form-field>
 						</div>
+			  
 						<img src={{photo}}>
 					  	<button class="botaoLR" mat-raised-button color="primary" (click)="upload()" [disabled]="!available" (click)="flagConfirm == false ? modal.close() : false">Confirmar</button>
 
@@ -71,7 +68,6 @@
 			
 		</ng-template>
 		<section id="Posts">
-
 			<div class="content">
 				<div class="column wrap" fxLayoutGap="16px grid" style="width:100%">
 					<div *ngFor="let post of posts">
@@ -93,7 +89,5 @@
 				</div>
 			</div>
 		</section>
-
-
 	</div>
 </div>
