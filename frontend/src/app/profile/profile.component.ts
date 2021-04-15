@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit {
   descriptionToShow:string ="";
 
   idToShow:string = "";
-  
+  showOverlay:boolean = true;
 
   constructor(private router: Router, private userService: UserService, private postService: PostService, private modalService: NgbModal) { 
     const navigation = this.router.getCurrentNavigation();

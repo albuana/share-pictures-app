@@ -70,7 +70,7 @@
 									<div mat-card-title class="card" >{{postToShow.title}}</div>
 									<img mat-card-image [src]="postToShow.photo" />
 									<div class="card" >{{postToShow.description}}</div>
-									<button mat-button (click)="removePost(postToShow._id)">REMOVE</button>
+									<button mat-button (click)="removePost(postToShow._id)" (click)="removeFlag == false ? modal.close() : false"> REMOVE</button>
 								</mat-card>
 			
 							<!-- </div> -->

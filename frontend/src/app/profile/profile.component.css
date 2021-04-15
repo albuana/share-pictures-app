@@ -43,7 +43,9 @@
   .topnav-right {
     float: right;
   }
-  
+  .overlay {
+    position: fixed;
+  }
   
   
   .foto .mat-card{
