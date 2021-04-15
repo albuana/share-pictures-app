@@ -137,8 +137,11 @@ export class WallComponent implements OnInit {
     }
 
     if (this.description.length == 0 && this.flagConfirm == false) {
-      alert("Parece que não colocou descrição na sua foto.\nPretende proceder?");
-      this.flagConfirm = true;
+      const res=confirm("Post doesn't have a description. Are you sure you want to confirm?");
+      if(res){
+        this.postService.addPost({ title: this.title, description: this.description, photo: this.photo, user: this.user._id } as Post).subscribe(() => this.getPosts());
+        this.flagConfirm = false;
+      }
       return;
     }
 

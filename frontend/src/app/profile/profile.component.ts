@@ -32,12 +32,10 @@ export class ProfileComponent implements OnInit {
     photo:""
   }
   closeResult = '';
-  removeFlag:boolean = false;
   titleToShow:string ="";
   descriptionToShow:string ="";
-
+  removeFlag:boolean = false;
   idToShow:string = "";
-  showOverlay:boolean = true;
 
   constructor(private router: Router, private userService: UserService, private postService: PostService, private modalService: NgbModal) { 
     const navigation = this.router.getCurrentNavigation();
@@ -81,13 +79,9 @@ export class ProfileComponent implements OnInit {
   }
 
   removePost(id:string){
-    if(!this.removeFlag){
-      alert("De certeza que quer remover a foto?\nClique de novo em Remover")
-      this.removeFlag = true;
-
-    }else{
-    this.postService.deletePost(id).subscribe(post => this.getPosts());
-    this.removeFlag = false;
+    const res=confirm("Are you sure you want to delete your post?")
+    if(res){
+      this.postService.deletePost(id).subscribe(post => this.getPosts());
     }
   }
 
