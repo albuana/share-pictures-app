@@ -4,6 +4,8 @@ import { PostService } from '../post.service';
 import { Post } from '../post';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import {NgbModal, ModalDismissReasons} 
+      from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-profile',
@@ -18,7 +20,11 @@ export class ProfileComponent implements OnInit {
     password: "",
   };
   posts: Post[] = [];
-  constructor(private router: Router, private userService: UserService, private postService: PostService) { 
+
+  closeResult = '';
+
+
+  constructor(private router: Router, private userService: UserService, private postService: PostService, private modalService: NgbModal) { 
     const navigation = this.router.getCurrentNavigation();
     console.log(navigation?.extras.state)
     const state = navigation?.extras.state as {
@@ -55,6 +61,27 @@ export class ProfileComponent implements OnInit {
 
   removePost(id:string){
     this.postService.deletePost(id).subscribe(post => this.getPosts());
+  }
+
+
+  open(content: any) {
+    this.modalService.open(content,
+   {ariaLabelledBy: 'modal-basic-title', centered : true}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = 
+         `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
 }
