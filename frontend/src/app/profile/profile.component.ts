@@ -42,7 +42,6 @@ export class ProfileComponent implements OnInit {
   constructor(private router: Router, private userService: UserService, private postService: PostService, private modalService: NgbModal) { 
     const navigation = this.router.getCurrentNavigation();
     if(localStorage.getItem('id')){
-      console.log("Entra");
       this.getUser(localStorage.getItem('id')!);
 
     }
@@ -87,7 +86,6 @@ export class ProfileComponent implements OnInit {
       this.removeFlag = true;
 
     }else{
-    console.log(id);
     this.postService.deletePost(id).subscribe(post => this.getPosts());
     this.removeFlag = false;
     }

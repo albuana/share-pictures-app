@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service'
 import { User } from '../user';
+import { Post } from '../post';
 import { Router, NavigationExtras } from '@angular/router'
 import {FormControl, Validators} from '@angular/forms';
+import { PostService } from '../post.service';
 
 
 @Component({
@@ -19,6 +21,7 @@ export class LoginComponent implements OnInit {
   reg_password: string = "";
 
   users: User[] = [];
+  posts: Post[] = [];
 
   user: User = {
     authenticated: false,
@@ -29,7 +32,7 @@ export class LoginComponent implements OnInit {
 
   notifyMessage: string = '';
 
-  constructor(private userService: UserService, private Router: Router) { }
+  constructor(private userService: UserService, private Router: Router, private postService: PostService) { }
 
   ngOnInit() {
     this.getUsers();
@@ -57,7 +60,7 @@ export class LoginComponent implements OnInit {
         if (this.users[i].password == this.log_password) {
           flag = true;
           // alert("O Utilizador autenticou-se com sucesso.");
-          this.Router.navigate(['/wall'], { state: { nickname: this.users[i].nickname } });
+          this.checkWhereToRedirect(this.users[i]);
         }
       }
     }
@@ -73,6 +76,21 @@ export class LoginComponent implements OnInit {
         this.users = users;
       })
   }
+
+  checkWhereToRedirect(user: User): void {
+    this.postService.getPostsByUser(user._id)
+      .subscribe(posts => {
+        this.posts = posts;
+        if(this.posts.length>0){
+          this.Router.navigate(['profile',user._id], {state: {id:user._id}});
+        }
+        else{
+          this.Router.navigate(['/wall'], { state: { nickname: user.nickname }});
+
+        }
+      })
+  }
+
 
   passVerify(): boolean {
     let flagLen = true;
@@ -191,4 +209,6 @@ export class LoginComponent implements OnInit {
 
 
 }
+
+
 
