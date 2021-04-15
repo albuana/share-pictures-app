@@ -17,6 +17,7 @@
   font-size: 17px;
 }
 
+
 /* Navbar links on mouse-over */
 .navbar a:hover {
   background-color: #5b68c5;
@@ -46,6 +47,7 @@
 }
 
 
+
 .mat-card {
   transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
   /* display: block; */
@@ -53,6 +55,7 @@
   padding: 16px;
   max-width: 500px;
   border-radius: 7px;
+  overflow: auto;
 }
 
 
