@@ -70,31 +70,32 @@
 			</mat-card>
 			<!-- </div> -->
 		</ng-template>
-		
-		<ng-template #content let-modal>
+
+		<ng-template #contentt let-modal>
 			<!-- <div *ngFor="let post of posts"> -->
-			<div class="fotos" style=" align-content: flex-start; margin-right: 40px; margin-left: 40px;">
+			<div class="fotos" style="align-content: center;margin-top: 40px; margin-bottom: 40px; margin-right: auto; margin-left: auto;">
 				<!-- <div class="row" > -->
 				<!-- <div class="column"> -->
 
-				<mat-card class="mat-elevation-z4"
-					style="align-content: center; margin-right: auto; margin-left: auto;">
+				<mat-card class="mat-elevation-z4">					
 					<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
 						<span aria-hidden="true">
 							×
 						</span>
 					</button>
-
-					<mat-card class="mat-elevation-z4"
-						style="align-content: center;margin-top: 40px; margin-bottom: 40px; margin-right: auto; margin-left: auto;"
-						*ngFor="let post of posts| slice:0:limit;">
-						<div mat-card-title class="card">{{post.title}}</div>
-						<img mat-card-image [src]="post.photo" />
-
-						<div class="card">{{post.description}}</div>
-						<button mat-button>LIKE</button>
-						<button mat-button>SHARE</button>
-					</mat-card>
+						<div mat-card-title class="card">{{postToShow.title}}</div>
+						<img mat-card-image [src]="postToShow.photo" />
+						<div class="card">{{postToShow.description}}</div>
+						<button mat-button>   
+							<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+								<path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+							</svg>
+							</button>
+						<button mat-button>   
+							<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
+								<path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+							</svg>
+						</button>
 				</mat-card>
 			</div>
 		</ng-template>
@@ -102,9 +103,9 @@
 
 		<div class="foto" style=" align-content: flex-start; margin-right: 40px; margin-left: 100px;">
 			<div class="row" style=" margin-right: 40px; margin-left: 40px;">
-				<mat-card (click)="mostraFoto(content, post._id) " class="mat-elevation-z4"
+				<mat-card (click)="mostraFoto(contentt, post._id) " class="mat-elevation-z4"
 					style="align-content: flex-start; margin-top: 40px; margin-bottom: 40px; margin-right: 40px; margin-left: 40px;"
-					*ngFor="let post of posts">
+					*ngFor="let post of posts| slice:0:limit;">
 					<img mat-card-image class="card" [src]="post.photo" />
 				</mat-card>
 			</div>
