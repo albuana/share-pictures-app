@@ -25,13 +25,11 @@ export class UserService {
   }
 
   getUsers(): Observable<User[]> {
-    console.log(this.http.get<User[]>(this.url))
     return this.http.get<User[]>(this.url);
   }
 
   getUser(id: string): Observable<User> {
     const url = `${this.url}/${id}`;
-    console.log(this.http.get<User>(url))
     return this.http.get<User>(url);
   }
 
@@ -43,7 +41,6 @@ export class UserService {
   }
 
   addUser(user: User): Observable<User> {
-    console.log(user);
     return this.http.post<User>(this.url, user, this.httpOptions).pipe(
       tap((user: User) => console.log(`added user w/ id=${user}`)),
       catchError(this.handleError<User>('addUser'))
@@ -51,7 +48,6 @@ export class UserService {
   }
   update(user: User): Observable<User> {
     const url = `${this.url}/${user._id}`;
-    console.log(user);
     return this.http.put<User>(url, user, this.httpOptions).pipe(
       tap((user: User) => console.log(`added user w/ id=${user}`)),
       catchError(this.handleError<User>('addUser'))

@@ -33,13 +33,10 @@ export class WallComponent implements OnInit {
 
   flagConfirm: boolean = false;
   available: boolean = false;
-  isRecent: boolean = false;
 
   constructor(private router: Router, private userService: UserService, private postService: PostService, private modalService: NgbModal) { 
     const navigation = this.router.getCurrentNavigation();
-    console.log(localStorage.getItem('nickname')+ "Nickname");
     if(localStorage.getItem('nickname')){
-      console.log("Entra");
       this.getUserByNickname(localStorage.getItem('nickname')!);
 
     }
@@ -70,10 +67,10 @@ export class WallComponent implements OnInit {
       })
   }
   getPosts(): void {
-    this.postService.getPosts()
-      .subscribe(posts => {
-        this.posts = posts;
-      })
+    this.postService.getRecentPosts()
+    .subscribe(posts => {
+      this.posts = posts;
+    })
   }
   toProfile(): void {
     this.router.navigate(['profile',this.user._id], {state: {id:this.user._id}});
@@ -149,25 +146,6 @@ export class WallComponent implements OnInit {
     this.postService.addPost({ title: this.title, description: this.description, photo: this.photo, user: this.user._id } as Post).subscribe(() => this.getPosts());
     this.flagConfirm = false;
   }
-  }
-  recentEvent(): void{
-    if(this.isRecent){
-      this.getPosts();
-      this.isRecent=false;
-      console.log("isRecent");
-    }
-    else{
-      this.getRecentPosts();
-      this.isRecent=true;
-      console.log("NotRecent");
-
-    }
-  }
-  getRecentPosts() {
-    this.postService.getRecentPosts()
-      .subscribe(posts => {
-        this.posts = posts;
-      })
   }
 
   toWall(): void {
