@@ -220,3 +220,12 @@ element.style {
   margin-left: auto;
   /* padding: 0px 30px 30px 0px; */
 }
+
+
+.botao {
+  width: 130px;
+  border-radius: 7px;
+  color: white;
+  background-color: black;
+  margin-top: 15px;
+}
