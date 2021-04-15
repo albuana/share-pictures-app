@@ -42,7 +42,7 @@ router.get('/likes', async (req, res) => {
 //@ GET Posts
 router.get('/user/:userId', async (req, res) => {
     try{
-        const post=await Posts.find({ user: req.params.userId });
+        const post=await Posts.find({ user: req.params.userId }).sort({date: -1});
         if(!post) res.status(400).json("No post found");
         res.json(post);
     }catch(err){
