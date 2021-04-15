@@ -127,34 +127,38 @@ img[_ngcontent-fxn-c187] {
   /* max-height: 500px; */
 }
 
-element.style {
+/* element.style {
+  margin-right: 100px;
+  margin-left: 100px;
   align-content: center;
   flex-flow: wrap;
   box-sizing: border-box;
   display: flex;
   margin: 0px -16px -16px 0px;
-}
+} */
 
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+  margin-right: 100px;
+  margin-left: 100px;
   align-items: flex-end;
 }
 
-.row[_ngcontent-bjn-c187] {
+/* .row[_ngcontent-bjn-c187] {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+  margin-right: 100px;
+  margin-left: 100px;
   margin: 60px;
   align-items: flex-end;
-}
+} */
 
 .content[_ngcontent-bng-c396] {
   text-align: -webkit-center;
   margin: 60px;
+  margin-right: 100px;
+  margin-left: 100px;
 }
 
 #cruz{
@@ -229,4 +233,11 @@ div.modal-content {
   border: 1px solid rgba(0,0,0,.2);
   border-radius: 70px;
   outline: 0;
+}
+
+element.style {
+  align-content: flex-start;
+  margin-right: auto;
+  margin-left: auto;
+  /* padding: 0px 30px 30px 0px; */
 }

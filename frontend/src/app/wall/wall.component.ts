@@ -119,8 +119,6 @@ export class WallComponent implements OnInit {
 
   }
 
-
-
   upload() {
     if (this.title.length == 0) {
       this.title = this.fileName;
@@ -181,11 +179,4 @@ export class WallComponent implements OnInit {
 
 }
 
-function DialogContentExampleDialog(DialogContentExampleDialog: any) {
-  throw new Error('Function not implemented.');
-}
-
-function openDialog() {
-  throw new Error('Function not implemented.');
-}
 
