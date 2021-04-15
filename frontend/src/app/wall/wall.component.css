@@ -34,8 +34,8 @@
   }
   .content {
     padding: 16px;
-    margin-left: 100px;
-    margin-right: 100px;
+    /* margin-left: 100px;
+    margin-right: 100px; */
     text-align: -webkit-center;
   }
   /* Right-aligned section inside the top navigation */

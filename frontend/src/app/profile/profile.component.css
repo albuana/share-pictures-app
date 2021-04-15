@@ -1,90 +1,156 @@
-svg {
-  overflow: hidden;
-  vertical-align: text-top;
-}
- 
- /* Style the navigation bar */
-.navbar {
-  width: 100%;
-  background-color:white;
-  overflow: auto;
-  display: block;
-  padding: 0px;
-}
-
-/* Navbar links */
-.navbar a {
-  float: left;
-  text-align: center;
-  padding: 12px;
-  color: black;
-  text-decoration: none;
-  font-size: 17px;
-}
-/* Navbar links on mouse-over */
-.navbar a:hover {
-  background-color: #5b68c5;
-}
-
-/* Current/active navbar link */
-.active {
-  background-color: rgb(246, 246, 246);;
-}
-
-/* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
-@media screen and (max-width: 500px) {
-  .navbar a {
-    float: none;
+  /* Style the navigation bar */
+  .navbar {
+    width: 100%;
+    background-color:white;
+    overflow: auto;
     display: block;
+    padding: 0px;
   }
+  /* Navbar links */
+  .navbar a {
+    float: left;
+    text-align: center;
+    padding: 12px;
+    color: black;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  
+  /* Navbar links on mouse-over */
+  .navbar a:hover {
+    background-color: #5b68c5;
+  }
+  /* Current/active navbar link */
+  .active {
+    background-color: rgb(246, 246, 246);;
+  }
+  /* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
+  @media screen and (max-width: 500px) {
+    .navbar a {
+      float: none;
+      display: block;
+    }
+  }
+  .content {
+    /* padding: 16px; */
+    /* margin-left: 100px;
+    margin-right: 100px; */
+    text-align: -webkit-center;
+  }
+  /* Right-aligned section inside the top navigation */
+  .topnav-right {
+    float: right;
+  }
+  
+  
+  
+  .mat-card {
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    /* display: block; */
+    position: relative;
+    padding: 16px;
+    max-width: 300px;
+    min-width: 300px;
+    /* max-height: 500px;
+    min-height: 500px; */
+    height: -webkit-fill-available;
+    border-radius: 7px;
+    /* overflow: auto; */
+    padding-bottom: initial;
+  }
+  
+  
+  #form {
+    text-align: -webkit-center;
+    margin-top: 15%;
+  }
+  .example-form {
+    min-width: 150px;
+    max-width: 400px;
+    width: 100%;
+  }
+  .example-full-width {
+    width: 100%;
+    margin-top: 30px;
+  }
+  .example-full-width:last-of-type {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .botaoLR {
+    margin-top: 15px;
+    width: 150px;
+    margin-left: 150px;
+  }
+  svg {
+    overflow: hidden;
+    vertical-align: text-top;
+  }
+  /* button{
+    margin-left: 443px;
+  } */
+  img {
+    vertical-align: middle;
+    border-style: none;
+    max-width: 500px;
+    max-height: 500px;
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
 }
 
-.content {
-  padding: 16px;
-  text-align: -webkit-center;
-}
-
-/* Right-aligned section inside the top navigation */
-.topnav-right {
-  float: right;
-}
-
-
-.mat-card {
+/* .mat-card[_ngcontent-nbv-c187] {
   transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
-  /* display: block; */
   position: relative;
   padding: 16px;
-  max-width: 500px;
+  min-width: 500px;
   border-radius: 7px;
-  overflow: auto;
+} */
 
+img[_ngcontent-fxn-c187] {
+  vertical-align: middle;
+  border-style: none;
+  /* max-width: 500px; */
+  width: 500px;
+  height: 500px;
+  /* max-height: 500px; */
 }
 
-.mat-card-image {
-  width: calc(100% + 32px);
-  margin: 16px -16px 16px -16px;
-}
-
-.div{
-  flex-flow: row wrap;
+element.style {
+  align-content: center;
+  flex-flow: wrap;
   box-sizing: border-box;
   display: flex;
   margin: 0px -16px -16px 0px;
 }
 
-#Posts{
- max-width: 500px;
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  align-items: flex-end;
 }
 
-.mat-card>:last-child:not(.mat-card-footer), .mat-card-content>:last-child:not(.mat-card-footer) {
-  margin-bottom: -16px;
-  margin-top: -16px;
+.row[_ngcontent-bjn-c187] {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  margin: 60px;
+  align-items: flex-end;
 }
 
-.mat-card-image:first-child {
-  margin-top: -16px;
-  border-radius: inherit;
-  /* border-top-left-radius: inherit;
-  border-top-right-radius: inherit; */
+.content[_ngcontent-bng-c396] {
+  text-align: -webkit-center;
+  margin: 60px;
 }
