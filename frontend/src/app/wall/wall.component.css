@@ -220,7 +220,8 @@ img[_ngcontent-fxn-c187] {
 
 element.style {
   align-content: flex-start;
-  
+  margin-right: auto;
+  margin-left: auto;
   /* padding: 0px 30px 30px 0px; */
 }
 
@@ -232,4 +233,3 @@ element.style {
   background-color: black;
   margin-top: 15px;
 }
-
