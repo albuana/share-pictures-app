@@ -17,9 +17,7 @@
 		<a (click)="logout()">Logout <i class="fa fa-fw fa-share"></i></a>
 	</div>
 </div>
-<div>
-	<mat-button-toggle (change)="recentEvent()">Recent</mat-button-toggle>
-</div>
+
 <div class="content">
 	<div fxLayout="column wrap" fxLayoutGap="16px grid" style="align-content: center;">
 		<ng-template #content let-modal>
@@ -37,7 +35,7 @@
 						<!-- <h2 class="modal-title" style="text-align:center;">Upload</h2> -->
 						<div>
 							<mat-form-field class="example-full-width formfield" appearance="fill">
-							<mat-label matSuffix>Title</mat-label>
+							<mat-label matSuffix>Nome</mat-label>
 								<input matInput placeholder="Title" [(ngModel)]="title" required>
 							</mat-form-field>
 						</div>
@@ -55,7 +53,9 @@
 							</mat-form-field>
 						</div>
 			  
-						<img src={{photo}}>
+						<img src={{photo}} style=" border: 1px solid #ddd; /* Gray border */
+						border-radius: 4px;  /* Rounded border */
+						width: 150px; /* Set a small width */">
 					  	<button class="botaoLR" mat-raised-button color="primary" (click)="upload()" [disabled]="!available" (click)="flagConfirm == false ? modal.close() : false">Confirmar</button>
 
 					  </mat-tab>
