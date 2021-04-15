@@ -56,9 +56,7 @@ export class LoginComponent implements OnInit {
       if (this.users[i].nickname == this.log_username) {
         if (this.users[i].password == this.log_password) {
           flag = true;
-          alert("O Utilizador autenticou-se com sucesso.");
-
-          
+          // alert("O Utilizador autenticou-se com sucesso.");
           this.Router.navigate(['/wall'], { state: { nickname: this.users[i].nickname } });
         }
       }
@@ -158,7 +156,7 @@ export class LoginComponent implements OnInit {
     //O nickname será o nome pelo qual o utilizador é conhecido na plataforma e deve ser único e ter 3 
     //ou mais carateres (só pode ter letras ou algarismos)
     if (this.reg_username.length < 3) {
-      alert("O username tem de ter pelo menos 3 alagrismos");
+      alert("O seu username tem de conter 3 ou mais carateres dos quais só podem ser letras ou algarismos.");
       return false;
     }
 

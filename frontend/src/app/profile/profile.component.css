@@ -57,11 +57,13 @@ svg {
   padding: 16px;
   max-width: 500px;
   border-radius: 7px;
+  overflow: auto;
+
 }
 
 .mat-card-image {
   width: calc(100% + 32px);
-  margin: 0 -16px 16px -16px;
+  margin: 16px -16px 16px -16px;
 }
 
 .div{
@@ -73,4 +75,16 @@ svg {
 
 #Posts{
  max-width: 350px;
+}
+
+.mat-card>:last-child:not(.mat-card-footer), .mat-card-content>:last-child:not(.mat-card-footer) {
+  margin-bottom: -16px;
+  margin-top: -16px;
+}
+
+.mat-card-image:first-child {
+  margin-top: -16px;
+  border-radius: inherit;
+  /* border-top-left-radius: inherit;
+  border-top-right-radius: inherit; */
 }
