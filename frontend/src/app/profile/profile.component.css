@@ -70,3 +70,7 @@ svg {
   display: flex;
   margin: 0px -16px -16px 0px;
 }
+
+#Posts{
+ max-width: 350px;
+}
