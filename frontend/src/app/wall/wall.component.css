@@ -84,7 +84,6 @@
   .botaoLR {
     margin-top: 15px;
     width: 150px;
-    margin-left: 150px;
   }
   svg {
     overflow: hidden;
@@ -183,6 +182,11 @@ img[_ngcontent-fxn-c187] {
   text-align: center;
 }
 
+.mat-card-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
 .mat-card>:last-child:not(.mat-card-footer), .mat-card-content>:last-child:not(.mat-card-footer) {
   margin-bottom: -1px;
 }
@@ -215,8 +219,6 @@ img[_ngcontent-fxn-c187] {
   margin-left: 10px;
     margin-right: 10px;
 }
-
-
 
 element.style {
   align-content: flex-start;

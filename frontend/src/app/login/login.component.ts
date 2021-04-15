@@ -121,22 +121,22 @@ export class LoginComponent implements OnInit {
     }
 
     if(!flagLen){
-      alert("A password deve ter 8 ou mais carateres");
+      alert("A password tem de ter 8 ou mais carateres.\nPor favor tente de novo.");
       return false;
     }
 
     if(!flagLower){
-      alert("A password deve ter 1 ou mais caracteres minusculos");
+      alert("A password tem de ter 1 ou mais caracteres minusculos.\nPor favor tente de novo.");
       return false;
     }
 
     if(!flagUper){
-      alert("A password deve ter 1 ou mais caracteres maiusculos");
+      alert("A password tem de ter 1 ou mais caracteres maiusculos.\nPor favor tente de novo.");
       return false;
     }
 
     if(!flagN){
-      alert("A password deve ter 1 ou mais caracteres algarismos");
+      alert("A password tem de ter 1 ou mais caracteres algarismos.\nPor favor tente de novo.");
       return false;
     }
 
@@ -174,13 +174,13 @@ export class LoginComponent implements OnInit {
     //O nickname será o nome pelo qual o utilizador é conhecido na plataforma e deve ser único e ter 3 
     //ou mais carateres (só pode ter letras ou algarismos)
     if (this.reg_username.length < 3) {
-      alert("O seu username tem de conter 3 ou mais carateres dos quais só podem ser letras ou algarismos.");
+      alert("O seu username tem de conter no minimo 3 ou mais carateres dos quais só podem ser letras ou algarismos.\nPor favor tente de novo.");
       return false;
     }
 
     for(let i = 0; i<Array.from(this.reg_username).length; i++){
       if(!this.validCharacter(this.reg_username.charAt(i))){
-        alert("O username tem de conter apenas letras ou numeros");
+        alert("O username não pode conter caracteres especiais.\nPor favor tente de novo.");
         return false;
       }
     }
