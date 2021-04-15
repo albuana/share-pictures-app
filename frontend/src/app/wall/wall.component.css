@@ -34,6 +34,8 @@
   }
   .content {
     padding: 16px;
+    margin-left: 100px;
+    margin-right: 100px;
     text-align: -webkit-center;
   }
   /* Right-aligned section inside the top navigation */
@@ -135,4 +137,5 @@ element.style {
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+  align-items: flex-end;
 }
