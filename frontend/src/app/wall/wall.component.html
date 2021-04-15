@@ -2,16 +2,20 @@
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <div class="navbar">
 	<a class="active">Feed <i class="fa fa-fw fa-home"></i></a>
-	<a (click)="toProfile()"> {{user.nickname}} 
-		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
-			<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-			<path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
-		  </svg>
+	<a (click)="toProfile()"> {{user.nickname}}
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-square"
+			viewBox="0 0 16 16">
+			<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+			<path
+				d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z" />
+		</svg>
 	</a>
 	<a (click)="open(content)"> Upload
-		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
-			<path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
-		  </svg>
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+			class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+			<path
+				d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
+		</svg>
 	</a>
 	<div class="topnav-right">
 		<a (click)="logout()">Logout <i class="fa fa-fw fa-share"></i></a>
@@ -22,94 +26,96 @@
 	<div fxLayout="column wrap" fxLayoutGap="16px grid" style="align-content: center;">
 		<ng-template #content let-modal>
 			<!-- <div mat-dialog-actions> -->
-				<mat-card class="example-card">
-					<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-						<span aria-hidden="true">
-							×
-						</span>
-					</button>
-					
-					<mat-tab-group mat-align-tabs="center">
-					  <mat-tab label="Upload">
-						
+			<mat-card class="example-card">
+				<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+					<span aria-hidden="true">
+						×
+					</span>
+				</button>
+
+				<mat-tab-group mat-align-tabs="center">
+					<mat-tab label="Upload">
+
 						<!-- <h2 class="modal-title" style="text-align:center;">Upload</h2> -->
 						<div>
 							<mat-form-field class="example-full-width formfield" appearance="fill">
-							<mat-label matSuffix>Nome</mat-label>
+								<mat-label matSuffix>Nome</mat-label>
 								<input matInput placeholder="Title" [(ngModel)]="title" required>
 							</mat-form-field>
 						</div>
 						<div>
 							<mat-form-field class="example-full-width formfield" appearance="fill">
-							<mat-label>Description</mat-label>
-							<input matInput #input placeholder="Description" [(ngModel)]="description">
+								<mat-label>Description</mat-label>
+								<input matInput #input placeholder="Description" [(ngModel)]="description">
 							</mat-form-field>
-			  			</div>
+						</div>
 						<div>
 							<mat-form-field class="example-full-width formfield" appearance="fill">
-							<mat-label>Photo</mat-label>
-							<ngx-mat-file-input #imageInput type="file" accept="image/*" (change)="processFile()">
-							</ngx-mat-file-input>
+								<mat-label>Photo</mat-label>
+								<ngx-mat-file-input #imageInput type="file" accept="image/*" (change)="processFile()">
+								</ngx-mat-file-input>
 							</mat-form-field>
 						</div>
 						<div>
-						<img src={{photo}} style=" border: 1px solid #ddd; /* Gray border */
-						border-radius: 4px;  /* Rounded border */
-						width: 150px; /* Set a small width */">
+							<img src={{photo}} style=" border: 1px solid #ddd; /* Gray border */
+							border-radius: 4px;  /* Rounded border */
+							width: 150px; /* Set a small width */">
 						</div>
-					  	<button class="botaoLR" mat-raised-button color="primary" (click)="upload()" [disabled]="!available" (click)="flagConfirm == false ? modal.close() : false">Confirmar</button>
+						<button class="botaoLR" mat-raised-button color="primary" (click)="upload()"
+							[disabled]="!available"
+							(click)="flagConfirm == false ? modal.close() : false">Confirmar</button>
 
-					  </mat-tab>
-
-					</mat-tab-group>
-				  </mat-card>
+					</mat-tab>
+				</mat-tab-group>
+			</mat-card>
 			<!-- </div> -->
-			
 		</ng-template>
-
-		<!-- <div *ngFor="let post of posts"> -->
-			<div class="fotos" style=" align-content: flex-start; margin-right: 40px; margin-left: 100px;">
-			<div class="row" style=" margin-right: 40px; margin-left: 40px;" >
+		
+		<ng-template #content let-modal>
+			<!-- <div *ngFor="let post of posts"> -->
+			<div class="fotos" style=" align-content: flex-start; margin-right: 40px; margin-left: 40px;">
+				<!-- <div class="row" > -->
 				<!-- <div class="column"> -->
 
-					<mat-card class="mat-elevation-z4" style="align-content: center;margin-top: 40px; margin-bottom: 40px; margin-right: auto; margin-left: auto;" *ngFor="let post of posts| slice:0:limit;">
-						<div mat-card-title class="card" >{{post.title}}</div>
-						<img mat-card-image [src]="post.photo"/>
+				<mat-card class="mat-elevation-z4"
+					style="align-content: center; margin-right: auto; margin-left: auto;">
+					<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+						<span aria-hidden="true">
+							×
+						</span>
+					</button>
 
-						<div class="card" >{{post.description}}</div>
+					<mat-card class="mat-elevation-z4"
+						style="align-content: center;margin-top: 40px; margin-bottom: 40px; margin-right: auto; margin-left: auto;"
+						*ngFor="let post of posts| slice:0:limit;">
+						<div mat-card-title class="card">{{post.title}}</div>
+						<img mat-card-image [src]="post.photo" />
+
+						<div class="card">{{post.description}}</div>
 						<button mat-button>LIKE</button>
-						<button mat-button>SHARE</button>	
+						<button mat-button>SHARE</button>
 					</mat-card>
+				</mat-card>
+			</div>
+		</ng-template>
 
-				<!-- </div> -->
+
+		<div class="foto" style=" align-content: flex-start; margin-right: 40px; margin-left: 100px;">
+			<div class="row" style=" margin-right: 40px; margin-left: 40px;">
+				<mat-card (click)="mostraFoto(content, post._id) " class="mat-elevation-z4"
+					style="align-content: flex-start; margin-top: 40px; margin-bottom: 40px; margin-right: 40px; margin-left: 40px;"
+					*ngFor="let post of posts">
+					<img mat-card-image class="card" [src]="post.photo" />
+				</mat-card>
 			</div>
 		</div>
 
-		<!-- <section id="Posts">
-			<div class="content">
-				<div class="column wrap" fxLayoutGap="16px grid" style="width:100%">
-					<div *ngFor="let post of posts">
-						<mat-card class="mat-elevation-z4">
-							<mat-card-header>
-								<mat-card-title>{{post.title}}</mat-card-title>
-							</mat-card-header>
-							<img mat-card-image [src]="post.photo"/>
-							<mat-card-content>
-								<p style="width:100%">
-									{{post.description}}
-								</p>
-							</mat-card-content>
-							<mat-card-actions>
-								<button mat-button>LIKE</button>
-								<button mat-button>SHARE</button>							</mat-card-actions>
-						</mat-card>
-					</div>
-				</div>
-			</div>
-		</section> -->
-	</div>
-</div>
 
-<div  style=" align-self: center;" (click)="viewMore()">
-	<button mat-button>View More</button>
-</div>
+
+
+
+
+
+		<div style=" align-self: center;" (click)="viewMore()">
+			<button mat-button>View More</button>
+		</div>

@@ -24,6 +24,16 @@ export class WallComponent implements OnInit {
   users: User[] = [];
   posts: Post[] = [];
 
+  postToShow: Post = {
+    _id:"",
+    title:"",
+    description:"",
+    likes:0,
+    user: "", //id não nickname
+    date:new Date,
+    photo:""
+  }
+
   title: string = "";
   description: string = "";
   photo: string = "";
@@ -180,9 +190,10 @@ export class WallComponent implements OnInit {
       })
   }
 
-
-
-
+  mostraFoto(content: any, id:string){
+    this.postService.getPost(id).subscribe(post => this.postToShow = post);
+    this.open(content);
+  }
 }
 
 
