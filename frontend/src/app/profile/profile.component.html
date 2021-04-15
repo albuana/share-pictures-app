@@ -45,7 +45,7 @@
 								</p>
 							</mat-card-content>
 							<mat-card-actions style="display: flex; justify-content: center;">
-								<button mat-button (click)="removePost(postToShow._id)">REMOVE</button>
+								<button mat-button (click)="removePost(postToShow._id)" (click)="removeFlag == false ? modal.close() : false"> >REMOVE</button>
 							</mat-card-actions>
 						</mat-card>
 

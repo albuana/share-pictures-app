@@ -19,6 +19,9 @@
 		<a (click)="logout()">Logout <i class="fa fa-fw fa-share"></i></a>
 	</div>
 </div>
+<div>
+	<mat-button-toggle (change)="recentEvent()">Recent</mat-button-toggle>
+</div>
 <div class="content">
 	<div fxLayout="column wrap" fxLayoutGap="16px grid" style="align-content: center;">
 		<ng-template #content let-modal>
@@ -56,7 +59,7 @@
 							</mat-form-field>
 						</div>
 			  
-					  	<button class="botaoLR" mat-raised-button color="primary" (click)="upload()" [disabled]="!available">Confirmar</button>
+					  	<button class="botaoLR" mat-raised-button color="primary" (click)="upload()" [disabled]="!available" (click)="flagConfirm == false ? modal.close() : false">Confirmar</button>
 
 					  </mat-tab>
 				  

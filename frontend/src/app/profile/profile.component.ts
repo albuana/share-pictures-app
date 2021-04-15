@@ -6,6 +6,7 @@ import { User } from '../user';
 import { UserService } from '../user.service';
 import {NgbModal, ModalDismissReasons} 
       from '@ng-bootstrap/ng-bootstrap';
+      
 
 @Component({
   selector: 'app-profile',
