@@ -25,7 +25,7 @@
 		<ng-template #content let-modal>
 			<!-- <div mat-dialog-actions> -->
 				<mat-card class="example-card">
-					<button  type="button" (click)="modal.dismiss('Cross click')">
+					<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
 						<span aria-hidden="true">
 							×
 						</span>
@@ -59,16 +59,15 @@
 					  	<button class="botaoLR" mat-raised-button color="primary" (click)="upload()" [disabled]="!available" (click)="flagConfirm == false ? modal.close() : false">Confirmar</button>
 
 					  </mat-tab>
-				  
+
 					</mat-tab-group>
-				
-				
 				  </mat-card>
 			<!-- </div> -->
 			
 		</ng-template>
 
 		<!-- <div *ngFor="let post of posts"> -->
+			<div class="fotos">
 			<div class="row" >
 				<!-- <div class="column"> -->
 
@@ -83,7 +82,7 @@
 
 				<!-- </div> -->
 			</div>
-
+		</div>
 
 		<!-- <section id="Posts">
 			<div class="content">
