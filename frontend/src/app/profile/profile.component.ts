@@ -41,11 +41,17 @@ export class ProfileComponent implements OnInit {
 
   constructor(private router: Router, private userService: UserService, private postService: PostService, private modalService: NgbModal) { 
     const navigation = this.router.getCurrentNavigation();
-    console.log(navigation?.extras.state)
-    const state = navigation?.extras.state as {
-      id: string,
-    };
-    this.getUser(state.id);
+    if(localStorage.getItem('id')){
+      console.log("Entra");
+      this.getUser(localStorage.getItem('id')!);
+
+    }
+    else{
+      const state = navigation?.extras.state as {
+          id: string,
+      };
+      this.getUser(state.id);
+    }
   }
 
   ngOnInit(): void {
@@ -56,6 +62,7 @@ export class ProfileComponent implements OnInit {
       .subscribe(user => {
         this.user = user;
         this.getPosts();
+        localStorage.setItem('id', user._id);
       })
   }
 
