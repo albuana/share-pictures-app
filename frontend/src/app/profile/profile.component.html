@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="navbar">
-	<button (click)="toWall()">	Feed <i class="fa fa-fw fa-home"></i></button>
+	<button mat-button (click)="toWall()" style="background-color: white; margin-left:0px; border-radius: 0px;">Feed <i class="fa fa-fw fa-home"></i></button>
 
-	<button class="active"> {{user.nickname}}
+	<button mat-button class="active" style="background-color: #f6f6f6; margin-left:-10px; border-radius: 0px;"> {{user.nickname}}
 		<!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-square"
 			viewBox="0 0 16 16">
 			<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -12,7 +12,7 @@
 		</svg> -->
 	</button>
 	<div class="topnav-right">
-		<button (click)="logout()">Logout <i class="fa fa-fw fa-share"></i></button>
+		<button mat-button (click)="logout()" style="background-color: white; margin-right:-2px;  border-radius: 0px;">Logout <i class="fa fa-fw fa-share"></i></button>
 	</div>
 </div>
 
@@ -87,7 +87,7 @@
 				</ng-template>
 
 
-					<div class="foto" style=" align-content: flex-start; margin-right: 40px; margin-left: 100px;">
+					<div class="foto" style=" align-content: flex-start; margin-right: 50px; margin-left: 100px;">
 						<div class="row justify-content-center" style=" margin-left: 10px;" >
 								<mat-card class="mat-elevation-z4"
 									style="align-content: flex-start; margin-top: 40px; margin-bottom: 40px; margin-right: 40px; margin-left: 40px;"
