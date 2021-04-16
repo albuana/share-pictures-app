@@ -93,6 +93,7 @@ export class WallComponent implements OnInit {
   }
 
   logout(): void {
+    localStorage.removeItem('nickname');
     this.router.navigate(['login']);
   }
 

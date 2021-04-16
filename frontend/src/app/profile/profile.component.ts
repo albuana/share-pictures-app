@@ -41,7 +41,6 @@ export class ProfileComponent implements OnInit {
     const navigation = this.router.getCurrentNavigation();
     if(localStorage.getItem('id')){
       this.getUser(localStorage.getItem('id')!);
-
     }
     else{
       const state = navigation?.extras.state as {
@@ -68,6 +67,7 @@ export class ProfileComponent implements OnInit {
   }
 
   logout(): void {
+    localStorage.removeItem('id');
     this.router.navigate(['login']);
   }
 
