@@ -38,7 +38,7 @@ export class WallComponent implements OnInit {
   description: string = "";
   photo: string = "";
   fileName:string = "";
-  limit: number = 5;
+  limit: number = 50;
   closeResult = '';
 
   flagConfirm: boolean = false;
