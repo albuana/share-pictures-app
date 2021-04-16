@@ -6,6 +6,8 @@
   display: block;
   padding: 0px;
 }
+
+
 /* Navbar links */
 .navbar a {
   float: left;
@@ -16,10 +18,30 @@
   font-size: 17px;
 }
 
+/* Navbar links */
+.navbar button {
+  float: left;
+  text-align: center;
+  padding: 12px;
+  color: black;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar button:hover {
+  background-color: #5b68c5;
+  cursor: pointer;
+}
+
+.navbar button:focus {
+  background-color: #5b68c5;
+  cursor: pointer;
+}
 
 /* Navbar links on mouse-over */
 .navbar a:hover {
   background-color: #5b68c5;
+  cursor: pointer;
 }
 /* Current/active navbar link */
 .active {
@@ -61,6 +83,7 @@
   border-radius: 7px;
   /* overflow: auto; */
   padding-bottom: initial;
+  cursor: pointer;
 }
 
 
@@ -238,6 +261,8 @@ margin-top: 15px;
 
 
 
+
+
 /* ------ */
 
 
@@ -396,6 +421,7 @@ p, ul li, ol li {
 .footer_bottom p > i,
   .footer_bottom p > a:hover {
       color: #27ae60;
+      cursor: pointer;
   }	
 
   .social_links_area {
@@ -407,15 +433,18 @@ p, ul li, ol li {
   }
 .social_links_area > a:hover {
       color: #27ae60;
+      cursor: pointer;
   }
 
   .inline-style .social_links_area > a:hover {
       background-color: transparent;
       color: #27ae60;
       border: 0px solid transparent;
+      cursor: pointer;
   }
 .single_feature:hover .feature_text h4 {
       color: #27ae60;
+      cursor: pointer;
   }
 .kilimanjaro_blog_area {
   border-bottom: 1px solid #333;
