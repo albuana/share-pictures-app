@@ -45,10 +45,10 @@ export class LoginComponent implements OnInit {
       this.user.nickname = this.reg_username;
       this.userService.addUser({ nickname: this.user.nickname, password: this.user.password } as User)
         .subscribe((user: User) => {
-          this.users.push(user);
+          this.users.push(user); this.Router.navigate(['/wall'], { state: { nickname: this.user.nickname } });
         });
 
-      this.Router.navigate(['/wall'], { state: { nickname: this.user.nickname } });
+     
     }
   }
 
