@@ -38,7 +38,7 @@ export class WallComponent implements OnInit {
   description: string = "";
   photo: string = "";
   fileName:string = "";
-  limit: number = 50;
+  limit: number = 6;
   closeResult = '';
 
   flagConfirm: boolean = false;
@@ -139,12 +139,12 @@ export class WallComponent implements OnInit {
     }
 
     if (this.title.length > 100) {
-      alert("O titulo é muito grande");
+      alert("O nome da foto não pode exceder os 100 caracteres.");
       return;
     }
 
     if (this.description.length > 500) {
-      alert("A descricao é muito grande");
+      alert("A descrição não pode exceder os 500 caracteres.");
       return;
     }
 

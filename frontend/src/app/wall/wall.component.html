@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <div class="navbar">
 	<button  mat-button  class="active" style="background-color: #f6f6f6; margin-left:0px; border-radius: 0px;">Feed <i class="fa fa-fw fa-home"></i></button>
-	<button mat-button (click)="toProfile()" accesskey="p" style="background-color: white; margin-left:-10px; border-radius: 0px;"> {{user.nickname}}
+	<button mat-button (click)="toProfile()" accesskey="p" style="background-color: white; margin-left:-10px; border-radius: 0px;"> Profile
 		<!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-square"
 			viewBox="0 0 16 16">
 			<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -11,14 +11,14 @@
 		</svg> -->
 	</button>
 	<button mat-button (click)="open(content)" accesskey="u" style="background-color: white; margin-left:-10px; border-radius: 0px;"> Upload
-		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+		<svg style="  vertical-align: text-top;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 			class="bi bi-plus-square-fill" viewBox="0 0 16 16">
 			<path
 				d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
 		</svg>
 	</button>
 	<div class="topnav-right">
-		<button mat-button (click)="logout()" accesskey="l" style="background-color: white; margin-right:-2px; border-radius: 0px;">Logout <i class="fa fa-fw fa-share"></i></button>
+		<button mat-button (click)="logout()" accesskey="l" style="background-color: white; vertical-align: text-top; margin-right:-2px; border-radius: 0px;">Logout <i class="fa fa-fw fa-share"></i></button>
 	</div>
 </div>
 
@@ -119,8 +119,8 @@
 
 		<footer class="footer-16371" style="background-color: black;">
 			<div class="container" >
-				<div class="row justify-content-center align-items:center" style="color: white;  margin-top: 10px;  margin-bottom: 10px;">
-						<div class="copyright">
+				<div class="row justify-content-center align-items:center" style="color: white; margin-right: 95px;  margin-top: 10px;  margin-bottom: 10px;">
+						<div class="copyright"><br>
 							<p class="mb-0"><small>© Share Pictures App. All Rights Reserved.</small></p>
 						</div>
 				</div>
