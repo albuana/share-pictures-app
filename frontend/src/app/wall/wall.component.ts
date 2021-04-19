@@ -41,8 +41,8 @@ export class WallComponent implements OnInit {
   limit: number = 6;
   closeResult = '';
 
-  flagConfirm: boolean = false;
-  available: boolean = false;
+  flagConfirm: boolean = true;
+  available: boolean = true;
   isRecent: boolean = false;
   dialog: any;
 
@@ -148,23 +148,17 @@ export class WallComponent implements OnInit {
       return;
     }
 
-    if (this.description.length == 0 && this.flagConfirm == false) {
+    if (this.description.length == 0) {
       const res=confirm("Post doesn't have a description. Are you sure you want to confirm?");
       if(res){
+        this.flagConfirm==false;
         this.postService.addPost({ title: this.title, description: this.description, photo: this.photo, user: this.user._id } as Post).subscribe(() => this.getPosts());
-        this.flagConfirm = false;
       }
       return;
     }
-
-    if (this.description.length == 0 && this.flagConfirm == true) {
-      this.postService.addPost({ title: this.title, description: this.description, photo: this.photo, user: this.user._id } as Post).subscribe(() => this.getPosts());
-      this.flagConfirm = false;
-    }else{
-
-
-    this.postService.addPost({ title: this.title, description: this.description, photo: this.photo, user: this.user._id } as Post).subscribe(() => this.getPosts());
-    this.flagConfirm = false;
+    else{
+        this.flagConfirm==false;
+        this.postService.addPost({ title: this.title, description: this.description, photo: this.photo, user: this.user._id } as Post).subscribe(() => this.getPosts());
   }
   }
 
