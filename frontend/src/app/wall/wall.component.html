@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <div class="navbar">
 	<button  mat-button  class="active" style="background-color: #f6f6f6; margin-left:0px; border-radius: 0px;">Feed <i class="fa fa-fw fa-home"></i></button>
-	<button mat-button (click)="toProfile()" accesskey="p" style="background-color: white; margin-left:-10px; border-radius: 0px;"> Profile
+	<button mat-button (click)="toProfile()" accesskey="p" style="background-color: white; border-radius: 0px;"> Profile
 		<!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-square"
 			viewBox="0 0 16 16">
 			<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -10,7 +10,7 @@
 				d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z" />
 		</svg> -->
 	</button>
-	<button mat-button (click)="open(content)" accesskey="u" style="background-color: white; margin-left:-10px; border-radius: 0px;"> Upload
+	<button mat-button (click)="open(content)" accesskey="u" style="background-color: white; border-radius: 0px;"> Upload
 		<svg style="  vertical-align: text-top;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
 			class="bi bi-plus-square-fill" viewBox="0 0 16 16">
 			<path
@@ -18,7 +18,7 @@
 		</svg>
 	</button>
 	<div class="topnav-right">
-		<button mat-button (click)="logout()" accesskey="l" style="background-color: white; vertical-align: text-top; margin-right:-2px; border-radius: 0px;">Logout <i class="fa fa-fw fa-share"></i></button>
+		<button mat-button (click)="logout()" accesskey="l" style="background-color: white; vertical-align: text-top;  border-radius: 0px;">Logout <i class="fa fa-fw fa-share"></i></button>
 	</div>
 </div>
 
@@ -62,8 +62,7 @@
 							width: 150px; /* Set a small width */">
 						</div>
 						<button class="botaoLR" mat-raised-button color="primary" (click)="upload()"
-							[disabled]="!available"
-							(click)="flagConfirm === false ? modal.close() : false">Confirmar</button>
+						[disabled]="!available" style="justify-content: center;">Confirmar</button>
 
 					</mat-tab>
 				</mat-tab-group>
@@ -101,22 +100,25 @@
 		</ng-template>
 
 
+
 		<div class="foto" style=" align-content: flex-start; margin-right: 50px; margin-left: 100px;">
 			<div class="row justify-content-center" style=" margin-left: 10px;" >
-				<mat-card class="mat-elevation-z4"
-				style="align-content: flex-start; margin-top: 40px; margin-bottom: 40px; margin-right: 40px; margin-left: 40px;"
-				*ngFor="let post of posts| slice:0:limit;">
-					<button mat-button (click)="mostraFoto(contentt, post._id)" ><img  mat-card-image class="card" [src]="post.photo" />
-					</button>
-				</mat-card>
+				
+				 <div style="align-content: flex-start; margin-top: 40px; margin-bottom: 40px; margin-right: 40px; margin-left: 40px;"
+				 *ngFor="let post of posts| slice:0:limit;">
+					<button mat-button (click)="mostraFoto(contentt, post._id)" ><img  mat-card-image class="card" [src]="post.photo" /></button>
+			
+				</div>
+				
 			</div>
 		</div>
+
 		<div (click)="viewMore()">
 			<button class="botao"  mat-button>LOAD MORE</button>
 		</div>
-
-
-
+		
+		
+		
 		<footer class="footer-16371" style="background-color: black;">
 			<div class="container" >
 				<div class="row justify-content-center align-items:center" style="color: white; margin-right: 95px;  margin-top: 10px;  margin-bottom: 10px;">
@@ -126,3 +128,7 @@
 				</div>
 			</div>
 		</footer>
+
+	</div>
+</div>
+

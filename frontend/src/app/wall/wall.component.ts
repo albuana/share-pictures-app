@@ -42,7 +42,7 @@ export class WallComponent implements OnInit {
   closeResult = '';
 
   flagConfirm: boolean = true;
-  available: boolean = true;
+  available: boolean = false;
   isRecent: boolean = false;
   dialog: any;
 

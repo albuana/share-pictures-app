@@ -209,7 +209,6 @@ position: relative;
 -webkit-user-select: none;
 -moz-user-select: none;
 -ms-user-select: none;
-background: #6c757d6e;
 user-select: none;
 /* padding-top: 10px; */
 /* margin-top: 10px; */
@@ -446,4 +445,6 @@ p, ul li, ol li {
   margin-bottom: 5px;
   padding-bottom: 10px;
 }
+
+
 

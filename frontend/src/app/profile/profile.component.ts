@@ -4,9 +4,9 @@ import { PostService } from '../post.service';
 import { Post } from '../post';
 import { User } from '../user';
 import { UserService } from '../user.service';
-import {NgbModal, ModalDismissReasons} 
-      from '@ng-bootstrap/ng-bootstrap';
-      
+import { NgbModal, ModalDismissReasons }
+  from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-profile',
@@ -23,28 +23,40 @@ export class ProfileComponent implements OnInit {
   posts: Post[] = [];
 
   postToShow: Post = {
-    _id:"",
-    title:"",
-    description:"",
-    likes:0,
+    _id: "",
+    title: "",
+    description: "",
+    likes: 0,
     user: "", //id não nickname
-    date:new Date,
-    photo:""
+    date: new Date,
+    photo: ""
   }
   closeResult = '';
-  titleToShow:string ="";
-  descriptionToShow:string ="";
-  removeFlag:boolean = false;
-  idToShow:string = "";
+  titleToShow: string = "";
+  descriptionToShow: string = "";
+  removeFlag: boolean = false;
+  idToShow: string = "";
 
-  constructor(private router: Router, private userService: UserService, private postService: PostService, private modalService: NgbModal) { 
+  title: string = "";
+  description: string = "";
+  photo: string = "";
+  fileName: string = "";
+  limit: number = 6;
+
+  flagConfirm: boolean = true;
+  available: boolean = false;
+  isRecent: boolean = false;
+  dialog: any;
+
+
+  constructor(private router: Router, private userService: UserService, private postService: PostService, private modalService: NgbModal) {
     const navigation = this.router.getCurrentNavigation();
-    if(localStorage.getItem('id')){
+    if (localStorage.getItem('id')) {
       this.getUser(localStorage.getItem('id')!);
     }
-    else{
+    else {
       const state = navigation?.extras.state as {
-          id: string,
+        id: string,
       };
       this.getUser(state.id);
     }
@@ -52,7 +64,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   getUser(id: string): void {
     this.userService.getUser(id)
       .subscribe(user => {
@@ -78,9 +90,9 @@ export class ProfileComponent implements OnInit {
       })
   }
 
-  removePost(id:string){
-    const res=confirm("Are you sure you want to delete your post?")
-    if(res){
+  removePost(id: string) {
+    const res = confirm("Are you sure you want to delete your post?")
+    if (res) {
       this.postService.deletePost(id).subscribe(post => this.getPosts());
     }
   }
@@ -88,15 +100,15 @@ export class ProfileComponent implements OnInit {
 
   open(content: any) {
     this.modalService.open(content,
-   {ariaLabelledBy: 'modal-basic-title', centered : true}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = 
-         `Dismissed ${this.getDismissReason(reason)}`;
-    });
+      { ariaLabelledBy: 'modal-basic-title', centered: true }).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult =
+          `Dismissed ${this.getDismissReason(reason)}`;
+      });
   }
-  
-  mostraFoto(content: any, id:string){
+
+  mostraFoto(content: any, id: string) {
     this.postService.getPost(id).subscribe(post => this.postToShow = post);
     this.open(content);
   }
@@ -108,6 +120,52 @@ export class ProfileComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+
+  upload() {
+    if (this.title.length == 0) {
+      this.title = this.fileName;
+    }
+
+    if (this.photo.length == 0) {
+      alert("O nome da foto não pode exceder os 100 caracteres.");
+    }
+
+    if (this.title.length > 100) {
+      alert("O nome da foto não pode exceder os 100 caracteres.");
+      return;
+    }
+
+    if (this.description.length > 500) {
+      alert("A descrição não pode exceder os 500 caracteres.");
+      return;
+    }
+
+    if (this.description.length == 0) {
+      const res = confirm("Post doesn't have a description. Are you sure you want to confirm?");
+      if (res) {
+        this.flagConfirm == false;
+        this.postService.addPost({ title: this.title, description: this.description, photo: this.photo, user: this.user._id } as Post).subscribe(() => this.getPosts());
+      }
+      return;
+    }
+    else {
+      this.flagConfirm == false;
+      this.postService.addPost({ title: this.title, description: this.description, photo: this.photo, user: this.user._id } as Post).subscribe(() => this.getPosts());
+    }
+  }
+
+  processFile() {
+    const file = (event!.target as HTMLInputElement).files!;
+    const Reader = new FileReader();
+    this.fileName = file[0].name;
+    this.available = true;
+    Reader.readAsDataURL(file[0]);
+    Reader.onload = () => {
+      this.photo = Reader.result as string;
+    }
+
   }
 
 }
