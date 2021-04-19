@@ -10,7 +10,7 @@
 
 #form {
   text-align: -webkit-center;
-  margin-top: 15%;
+  padding-top: 320px;
 }
 
 
@@ -33,4 +33,11 @@
 .botaoLR {
   margin-top: 15px;
   width: 150px;
+}
+
+
+.example1{
+  height: -webkit-fill-available;
+  margin-top: -15%;
+  background: url(https://media.giphy.com/media/sxwk9hGlsULcYm6hDX/giphy.gif);
 }

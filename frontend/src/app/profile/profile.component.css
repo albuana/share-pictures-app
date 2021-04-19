@@ -227,8 +227,8 @@ min-width: 64px;
 padding: 0px 16px;
 border-radius: 4px;
 overflow: visible;
-margin-left: 10px;
-  margin-right: 10px;
+/* margin-left: 10px;
+  margin-right: 10px; */
 }
 
 

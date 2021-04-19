@@ -121,22 +121,22 @@ export class LoginComponent implements OnInit {
     }
 
     if(!flagLen){
-      alert("A password tem de ter 8 ou mais carateres.\nPor favor tente de novo.");
+      alert("A palavra-passe tem de ter 8 ou mais carateres.\nPor favor tente de novo.");
       return false;
     }
 
     if(!flagLower){
-      alert("A password tem de ter 1 ou mais caracteres minusculos.\nPor favor tente de novo.");
+      alert("A palavra-passe tem de ter 1 ou mais caracteres minusculos.\nPor favor tente de novo.");
       return false;
     }
 
     if(!flagUper){
-      alert("A password tem de ter 1 ou mais caracteres maiusculos.\nPor favor tente de novo.");
+      alert("A palavra-passe tem de ter 1 ou mais caracteres maiusculos.\nPor favor tente de novo.");
       return false;
     }
 
     if(!flagN){
-      alert("A password tem de ter 1 ou mais caracteres algarismos.\nPor favor tente de novo.");
+      alert("A palavra-passe tem de ter 1 ou mais caracteres algarismos.\nPor favor tente de novo.");
       return false;
     }
 
@@ -150,7 +150,7 @@ export class LoginComponent implements OnInit {
 
   getErrorMessage() {
     if (this.username.hasError('required')) {
-      return 'You must enter a value.';
+      return 'Preenchimento obrigatório.';
     }
 
     return this.username.hasError('username') ? 'Not a valid username' : '';
@@ -163,7 +163,7 @@ export class LoginComponent implements OnInit {
   getErrorMessage2() {
 
     if (this.password.hasError('required')) {
-      return 'You must enter a value.';
+      return 'Preenchimento obrigatório.';
     }
     return this.password.hasError('password');
   }
@@ -174,13 +174,13 @@ export class LoginComponent implements OnInit {
     //O nickname será o nome pelo qual o utilizador é conhecido na plataforma e deve ser único e ter 3 
     //ou mais carateres (só pode ter letras ou algarismos)
     if (this.reg_username.length < 3) {
-      alert("O seu username tem de conter no minimo 3 ou mais carateres dos quais só podem ser letras ou algarismos.\nPor favor tente de novo.");
+      alert("O seu nome de utilizador tem de conter no minimo 3 ou mais carateres dos quais só podem ser letras ou algarismos.\nPor favor tente de novo.");
       return false;
     }
 
     for(let i = 0; i<Array.from(this.reg_username).length; i++){
       if(!this.validCharacter(this.reg_username.charAt(i))){
-        alert("O username não pode conter caracteres especiais.\nPor favor tente de novo.");
+        alert("O nome de utilizador não pode conter caracteres especiais.\nPor favor tente de novo.");
         return false;
       }
     }
@@ -188,7 +188,7 @@ export class LoginComponent implements OnInit {
     for (let i = 0; i < this.users.length; i++) {
       //Se o utilizador tentar registar um nickname que já existe, a mensagem de erro deve indicá-lo claramente
       if (this.users[i].nickname == this.reg_username) {
-        alert("O username " + this.reg_username +  " já está a ser utilizado. Por favor escolha outro.");
+        alert("O nome de utilizador " + this.reg_username +  " já está a ser utilizado. Por favor escolha outro.");
         return false;
       }
 

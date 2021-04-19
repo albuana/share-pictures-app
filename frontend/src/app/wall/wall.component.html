@@ -40,18 +40,18 @@
 						<div>
 							<mat-form-field class="example-full-width formfield" appearance="fill">
 								<mat-label matSuffix>Nome</mat-label>
-								<input matInput placeholder="Title" [(ngModel)]="title" required>
+								<input matInput placeholder="Nome" [(ngModel)]="title" required>
 							</mat-form-field>
 						</div>
 						<div>
 							<mat-form-field class="example-full-width formfield" appearance="fill">
-								<mat-label>Description</mat-label>
-								<input matInput #input placeholder="Description" [(ngModel)]="description">
+								<mat-label>Descrição</mat-label>
+								<input matInput #input placeholder="Descrição" [(ngModel)]="description">
 							</mat-form-field>
 						</div>
 						<div>
 							<mat-form-field class="example-full-width formfield" appearance="fill">
-								<mat-label>Photo</mat-label>
+								<mat-label>Foto</mat-label>
 								<ngx-mat-file-input #imageInput type="file" accept="image/*" (change)="processFile()">
 								</ngx-mat-file-input>
 							</mat-form-field>
