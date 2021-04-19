@@ -138,6 +138,10 @@ export class WallComponent implements OnInit {
       this.title = this.fileName;
     }
 
+    if (this.photo.length == 0) {
+      alert("O nome da foto não pode exceder os 100 caracteres.");
+    }
+
     if (this.title.length > 100) {
       alert("O nome da foto não pode exceder os 100 caracteres.");
       return;
