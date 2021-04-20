@@ -2,6 +2,7 @@ const express=require('express');
 const router=express.Router();
 //users models
 const Users=require('../../models/Users');
+const Posts=require('../../models/Posts');
 
 //@routes GET users
 //@ GET users
@@ -59,8 +60,8 @@ router.post('/', async (req, res) => {
 //@desc DELETE a user
 router.delete('/:id', async (req, res) => {
     try{
-        const user=await Users.findByIdAndDelete(req.params.id);
-        if(!user)  res.status(400).json("No user found");
+        const user=await Users.findById(req.params.id);
+        if(!user) res.status(400).json("Couldn't delete");
         res.json();
     }catch(err){
         res.status(400).json("No user found");
@@ -72,10 +73,40 @@ router.delete('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try{
         const user=await Users.findByIdAndUpdate(req.params.id, req.body);
+        console.log(user);
         if(!user) res.status(400).json("Couldn't update");
         res.json();
     }catch(err){
         res.status(400).json("Couldn't update");    }
 })
 
+router.get('/likes/:id', async (req, res) => {
+    try{
+        const user=await Users.findByIdAndUpdate(req.params.id, req.body);
+        const postsToReturn=getPosts(user.likes);
+        if(!postsToReturn) res.status(400).json("No post to return");
+        res.json(postsToReturn);
+    }catch(err){
+        res.status(400).json("Couldn't update");    }
+})
+
+router.get('/favourites/:id', async (req, res) => {
+    try{
+        const user=await Users.findById(req.params.id);
+        const postsToReturn=await getPosts(user.favourites);
+        console.log(postsToReturn);
+        res.json(postsToReturn);
+    }catch(err){
+        res.status(400).json("Couldn't Get Posts");    }
+})
+
+
+async function getPosts (postsId) {
+    const postsToReturn=[];
+    for (const post of postsId){
+        const postAux=await Posts.findById(post);
+        postsToReturn.push(postAux);
+    }
+    return postsToReturn;
+  }
 module.exports=router;
