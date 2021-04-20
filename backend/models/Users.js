@@ -10,9 +10,13 @@ const userSchema = new Schema({
         type: 'string',
         required: true,
     },
-    authenticated:{
-        type: Boolean,
-        default: false,
+    favourites:{
+        type: [Schema.Types.ObjectId], 
+        required: false,
+    },
+    likes:{
+        type: [Schema.Types.ObjectId], 
+        required: false,
     }
 });
 
