@@ -117,7 +117,7 @@ export class WallComponent implements OnInit {
   }
 
   isLiked(id: string): boolean {
-    for(let i = 0; i < this.user.favourites.length;i++){
+    for(let i = 0; i < this.user.likes.length;i++){
       if(this.user.likes[i]==id){
         return true;
       }
@@ -128,7 +128,7 @@ export class WallComponent implements OnInit {
   like(id:string): void {
     this.postToShow.likes++;
     this.user.likes.push(id);
-    this.userService.update(this.user).subscribe(res=>{this.updatePost()});
+    this.userService.update(this.user).subscribe(res => {this.updatePost});
   }
   updatePost() {
     this.postService.update(this.postToShow).subscribe();
@@ -137,7 +137,7 @@ export class WallComponent implements OnInit {
   unlike(id:string): void {
     this.postToShow.likes--;
     this.user.likes.splice(this.user.likes.indexOf(id), 1);
-    this.userService.update(this.user).subscribe(res=>{this.updatePost()});
+    this.userService.update(this.user).subscribe(res => {this.updatePost});
   }
 
   toUpload(): void {

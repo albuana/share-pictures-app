@@ -111,7 +111,7 @@ export class LikesComponent implements OnInit {
     return false;
   }
   isLiked(id: string): boolean {
-    for(let i = 0; i < this.user.favourites.length;i++){
+    for(let i = 0; i < this.user.likes.length;i++){
       if(this.user.likes[i]==id){
         return true;
       }
