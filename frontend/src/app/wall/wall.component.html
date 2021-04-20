@@ -26,11 +26,11 @@
 	</div>
 </div>
 
-<div class="content">
+<div class="content" >
 	<div fxLayout="column wrap" fxLayoutGap="16px grid" style="align-content: center;">
 		<ng-template #content let-modal>
 			<!-- <div mat-dialog-actions> -->
-			<mat-card class="example-card">
+			<mat-card class="example-card" >
 				<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
 					<span aria-hidden="true">
 						×
@@ -80,13 +80,13 @@
 				<!-- <div class="row" > -->
 				<!-- <div class="column"> -->
 
-				<mat-card class="mat-elevation-z4">					
+				<mat-card class="mat-elevation-z4" >					
 					<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
 						<span aria-hidden="true">
 							×
 						</span>
 					</button>
-						<div mat-card-title class="card">{{postToShow.title}}</div>
+						<div mat-card-title class="card" >{{postToShow.title}}</div>
 						<img mat-card-image [src]="postToShow.photo" />
 						<div class="card">{{postToShow.description}}</div>
 						<button *ngIf="isLiked(postToShow._id)" mat-button (click)="unlike(postToShow._id)">   
