@@ -23,6 +23,7 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { LikesComponent } from './likes/likes.component';
+import { PostsComponent } from './posts/posts.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { LikesComponent } from './likes/likes.component';
     UploadComponent,
     FavouritesComponent,
     LikesComponent,
+    PostsComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +78,11 @@ import { LikesComponent } from './likes/likes.component';
       {
         path: 'likes',
         component: LikesComponent
-      }
+      },
+      {
+        path: 'posts/:id',
+        component: PostsComponent
+      },
     ]),
     NgbModule
 
