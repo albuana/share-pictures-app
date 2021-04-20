@@ -16,10 +16,11 @@ export class UploadComponent implements OnInit {
 
 
   user: User = {
-    authenticated: false,
     _id: "",
     nickname: "",
     password: "",
+    favourites:[""],
+    likes:[""],
   };
 
   title: string = "";

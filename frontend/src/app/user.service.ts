@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { User } from './user';
+import { Post } from './post';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,15 @@ export class UserService {
     return this.http.get<User>(url);
   }
 
+  getFavouritePosts(id : string): Observable<Post[]> {
+    const url = `${this.url}/favourites/`+id;
+    return this.http.get<Post[]>(url);
+  }
+
+  getLikesPosts(id : string): Observable<Post[]> {
+    const url = `${this.url}/likes/`+id;
+    return this.http.get<Post[]>(url);
+  }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => { console.error(error);

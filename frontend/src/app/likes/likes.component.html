@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <div class="navbar">
-	<button  mat-button  class="active" style="background-color: #f6f6f6; margin-left:0px; border-radius: 0px;">Feed <i class="fa fa-fw fa-home"></i></button>
+	<button mat-button (click)="toWall()" style="background-color: white; margin-left:0px; border-radius: 0px;">Feed <i class="fa fa-fw fa-home"></i></button>
 	<button mat-button (click)="toProfile()" accesskey="p" style="background-color: white; border-radius: 0px;"> Profile
 		<!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-square"
 			viewBox="0 0 16 16">
@@ -10,9 +10,8 @@
 				d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z" />
 		</svg> -->
 	</button>
-	<button mat-button (click)="toFavourites()" accesskey="f" style="background-color: white; border-radius: 0px;"> Favourites
-	</button>
-	<button mat-button (click)="toLikes()" accesskey="f" style="background-color: white; border-radius: 0px;"> Most Likes
+    <button mat-button (click)="toFavourites()" style="background-color: white; margin-left:0px; border-radius: 0px;">Favourites</button>
+	<button mat-button class="active" accesskey="l" style="background-color: #f6f6f6; border-radius: 0px;"> Most Liked
 	</button>
 	<button mat-button (click)="open(content)" accesskey="u" style="background-color: white; border-radius: 0px;"> Upload
 		<svg style="  vertical-align: text-top;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -107,12 +106,11 @@
 							</svg>
 						</button>
 						<button *ngIf="isFavorite(postToShow._id)" mat-button  (click)="removeFavorite(postToShow._id)">   
-								Remove Favorite
-							</button>
+							Remove Favorite
+						</button>
 						<button *ngIf="!isFavorite(postToShow._id)" mat-button (click)="addFavorite(postToShow._id)">   
-								Favorite
-							</button>
-
+							Favorite
+						</button>
 				</mat-card>
 			</div>
 		</ng-template>
@@ -149,4 +147,5 @@
 
 	</div>
 </div>
+
 

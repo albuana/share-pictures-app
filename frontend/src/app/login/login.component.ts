@@ -24,10 +24,11 @@ export class LoginComponent implements OnInit {
   posts: Post[] = [];
 
   user: User = {
-    authenticated: false,
     _id: "",
     nickname: "",
     password: "",
+    favourites:[""],
+    likes:[""],
   };
 
   notifyMessage: string = '';

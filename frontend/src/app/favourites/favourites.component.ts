@@ -1,20 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PostService } from '../post.service';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Post } from '../post';
+import { PostService } from '../post.service';
 import { User } from '../user';
 import { UserService } from '../user.service';
 
-import {NgbModal, ModalDismissReasons} 
-      from '@ng-bootstrap/ng-bootstrap';
-import { state } from '@angular/animations';
-
 @Component({
-  selector: 'app-wall',
-  templateUrl: './wall.component.html',
-  styleUrls: ['./wall.component.css']
+  selector: 'app-favourites',
+  templateUrl: './favourites.component.html',
+  styleUrls: ['./favourites.component.css']
 })
-export class WallComponent implements OnInit {
+export class FavouritesComponent implements OnInit {
   user: User = {
     _id: "",
     nickname: "",
@@ -22,7 +19,6 @@ export class WallComponent implements OnInit {
     favourites:[""],
     likes:[""],
   };
-  users: User[] = [];
   posts: Post[] = [];
 
   postToShow: Post = {
@@ -50,43 +46,38 @@ export class WallComponent implements OnInit {
 
   constructor(private router: Router, private userService: UserService, private postService: PostService, private modalService: NgbModal) { 
     const navigation = this.router.getCurrentNavigation();
-    if(localStorage.getItem('nickname')){
-      this.getUserByNickname(localStorage.getItem('nickname')!);
+    if(localStorage.getItem('id')){
+      this.getUser(localStorage.getItem('id')!);
 
     }
     else{
       const state = navigation?.extras.state as {
-        nickname: string,
+        id: string,
       };
-      this.getUserByNickname(state.nickname);
+      this.getUser(state.id);
     }
 
   }
 
   ngOnInit(): void {
-    this.getUsers();
-    this.getPosts();
   }
   viewMore(): void {
     this.limit=this.limit+50;
   }
-  getUserByNickname(nickname: string): void {
-    this.userService.getUserByNickname(nickname)
+  getUser(id: string): void {
+    console.log("Ola");
+    this.userService.getUser(id)
       .subscribe(user => {
-        this.user = user[0];
-        localStorage.setItem('nickname', user[0].nickname);
-      })
-  }
-  getUsers(): void {
-    this.userService.getUsers()
-      .subscribe(users => {
-        this.users = users;
+        this.user = user;
+        localStorage.setItem('id', user._id);
+        this.getPosts();
       })
   }
   getPosts(): void {
-    this.postService.getRecentPosts()
+    this.userService.getFavouritePosts(this.user._id)
     .subscribe(posts => {
       this.posts = posts;
+      console.log(posts[0]);
     })
   }
   toProfile(): void {
@@ -98,13 +89,17 @@ export class WallComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
+  toUpload(): void {
+    this.router.navigate(['upload'], {state: {id:this.user._id}});
+  }
+
   addFavorite(id: string): void {
     this.user.favourites.push(id);
-    this.userService.update(this.user).subscribe();
+    this.userService.update(this.user).subscribe(res=>{this.getPosts();})
   }
   removeFavorite(id: string): void {
     this.user.favourites.splice(this.user.favourites.indexOf(id), 1);
-    this.userService.update(this.user).subscribe();
+    this.userService.update(this.user).subscribe(res=>{this.getPosts();});
   }
 
   isFavorite(id: string): boolean {
@@ -115,7 +110,6 @@ export class WallComponent implements OnInit {
     }
     return false;
   }
-
   isLiked(id: string): boolean {
     for(let i = 0; i < this.user.favourites.length;i++){
       if(this.user.likes[i]==id){
@@ -139,19 +133,6 @@ export class WallComponent implements OnInit {
     this.user.likes.splice(this.user.likes.indexOf(id), 1);
     this.userService.update(this.user).subscribe(res=>{this.updatePost()});
   }
-
-  toUpload(): void {
-    this.router.navigate(['upload'], {state: {id:this.user._id}});
-  }
-
-  toFavourites(): void {
-    this.router.navigate(['favourites'], {state: { id: this.user._id }});
-  }
-
-  toLikes(): void {
-    this.router.navigate(['likes'], {state: { id: this.user._id }});
-  }
-
   open(content: any) {
     this.modalService.open(content,
    {ariaLabelledBy: 'modal-basic-title', centered : true}).result.then((result) => {
@@ -233,11 +214,11 @@ export class WallComponent implements OnInit {
       console.log("NotRecent");
     }
   }
-
+  toLikes(): void {
+    this.router.navigate(['likes'], {state: { id: this.user._id }});
+  }
   mostraFoto(content: any, id:string){
     this.postService.getPost(id).subscribe(post => this.postToShow = post);
     this.open(content);
   }
 }
-
-

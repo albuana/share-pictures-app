@@ -15,10 +15,11 @@ import { NgbModal, ModalDismissReasons }
 })
 export class ProfileComponent implements OnInit {
   user: User = {
-    authenticated: false,
     _id: "",
     nickname: "",
     password: "",
+    favourites:[""],
+    likes:[""],
   };
   posts: Post[] = [];
 
@@ -107,7 +108,12 @@ export class ProfileComponent implements OnInit {
           `Dismissed ${this.getDismissReason(reason)}`;
       });
   }
-
+  toFavourites(): void {
+    this.router.navigate(['favourites'], {state: { id: this.user._id }});
+  }
+  toLikes(): void {
+    this.router.navigate(['likes'], {state: { id: this.user._id }});
+  }
   mostraFoto(content: any, id: string) {
     this.postService.getPost(id).subscribe(post => this.postToShow = post);
     this.open(content);

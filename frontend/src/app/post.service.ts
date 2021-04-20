@@ -22,6 +22,7 @@ export class PostService {
     console.log(this.http.get<Post[]>(this.url));
     return this.http.get<Post[]>(this.url);
   }
+
   getPost(id : string): Observable<Post> {
     const url = `${this.url}/${id}`;
     return this.http.get<Post>(url);
@@ -54,6 +55,12 @@ export class PostService {
       return of(result as T);
     };
   }
-
+  update(post: Post): Observable<Post> {
+    const url = `${this.url}/${post._id}`;
+    return this.http.put<Post>(url, post, this.httpOptions).pipe(
+      tap((post: Post) => console.log(`added post w/ id=${post}`)),
+      catchError(this.handleError<Post>('UpdatePost Error'))
+    );
+  }
   
 }
