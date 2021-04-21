@@ -124,7 +124,7 @@
   
   .card {
     position: relative;
-    display: flex;
+    display: flow-root; /*AQUIIII*/
     flex-direction: column;
     word-wrap: break-word;
     background-color: #fff;
@@ -263,3 +263,8 @@
   mat-button .mat-button-wrapper>*, .mat-flat-button .mat-button-wrapper>*, .mat-stroked-button .mat-button-wrapper>*, .mat-raised-button .mat-button-wrapper>*, .mat-icon-button .mat-button-wrapper>*, .mat-fab .mat-button-wrapper>*, .mat-mini-fab .mat-button-wrapper>* {
     vertical-align: text-top;
   }
+
+  mat-card-title {
+    display: block;
+    margin-bottom: 0px;
+}
