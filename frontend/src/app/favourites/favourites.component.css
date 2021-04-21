@@ -119,8 +119,7 @@
   img {
     vertical-align: middle;
     border-style: none;
-    max-width: 400px;
-    max-height: 500px;
+    width: 250px; /* HERE */
   }
   
   .card {
@@ -132,36 +131,7 @@
     background-clip: border-box;
     border: 0px solid rgba(0,0,0,.125);
     border-radius: 7px;
-    margin-bottom: 10px;
   }
-  
-  /* .mat-card[_ngcontent-nbv-c187] {
-  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  padding: 16px;
-  min-width: 500px;
-  border-radius: 7px;
-  } */
-  
-  img[_ngcontent-fxn-c187] {
-  vertical-align: middle;
-  border-style: none;
-  /* max-width: 500px; */
-  width: 500px;
-  height: 500px;
-  /* max-height: 500px; */
-  }
-  
-  /* element.style {
-  margin-right: 100px;
-  margin-left: 100px;
-  align-content: center;
-  flex-flow: wrap;
-  box-sizing: border-box;
-  display: flex;
-  margin: 0px -16px -16px 0px;
-  } */
-  
   
   .row {
   display: flex;

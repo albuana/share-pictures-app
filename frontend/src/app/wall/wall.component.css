@@ -118,8 +118,7 @@ svg {
 img {
   vertical-align: middle;
   border-style: none;
-  max-width: 400px;
-  max-height: 500px;
+  width: 250px; /* HERE */
 }
 
 .card {
@@ -131,7 +130,8 @@ img {
   background-clip: border-box;
   border: 0px solid rgba(0,0,0,.125);
   border-radius: 7px;
-  margin-bottom: 10px;
+  /* width: 100%; */
+  /* margin-bottom: 10px; */
 }
 
 /* .mat-card[_ngcontent-nbv-c187] {
@@ -165,18 +165,13 @@ margin: 0px -16px -16px 0px;
 .row {
 display: flex;
 flex-wrap: wrap;
-margin-right: 58px;
+/* margin-right: 58px; HEREEEEEE */
+margin-right: 0px;
 margin-left: 100px;
 align-items: flex-end;
+padding: 0px 0px 0px 0px;
 }
 
-.row[_ngcontent-nus-c185] {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: 150px;
-  margin-left: 100px;
-  align-items: flex-end;
-}
 
 /* .row[_ngcontent-bjn-c187] {
 display: flex;
@@ -187,12 +182,12 @@ margin: 60px;
 align-items: flex-end;
 } */
 
-.content[_ngcontent-bng-c396] {
+/* .content[_ngcontent-bng-c396] {
 text-align: -webkit-center;
 margin: 60px;
 margin-right: 100px;
 margin-left: 100px;
-}
+} */
 
 
 #cruz{
@@ -215,21 +210,26 @@ border-radius: 7px;
 text-align: center;
 }
 
+mat-card-image:first-child {
+  margin-top: -16px;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
 
 .mat-card>:last-child:not(.mat-card-footer), .mat-card-content>:last-child:not(.mat-card-footer) {
 margin-bottom: -1px;
 }
 
-.mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
+/* .mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
   box-sizing: border-box;
   position: relative;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none;
+  user-select: none; */
   /* padding-top: 10px; */
   /* margin-top: 10px; */
-  cursor: pointer;
+  /* cursor: pointer;
   outline: none;
   border: none;
   -webkit-tap-highlight-color: transparent;
@@ -239,14 +239,14 @@ margin-bottom: -1px;
   vertical-align: baseline;
   text-align: center;
   margin: 0;
-  min-width: 64px;
+  min-width: 64px; */
   /* line-height: 36px; */
-  padding: 0px 16px;
+  /* padding: 0px 16px;
   border-radius: 4px;
-  overflow: visible;
+  overflow: visible; */
   /* margin-left: 10px;
     margin-right: 10px; */
-  }
+  /* } */
 
 
 
@@ -288,3 +288,11 @@ footer{
   display: flex;
   justify-content: center;
 }
+
+/* @media (min-width: 576px){
+.modal-dialog {
+    max-width: 300px;
+    margin: 1.75rem auto;
+}
+} */
+

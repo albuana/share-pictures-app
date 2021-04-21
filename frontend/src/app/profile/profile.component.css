@@ -110,8 +110,7 @@ svg {
 img {
   vertical-align: middle;
   border-style: none;
-  max-width: 400px;
-  max-height: 500px;
+  width: 250px;
 }
 
 .card {
@@ -123,53 +122,19 @@ img {
   background-clip: border-box;
   border: 0px solid rgba(0,0,0,.125);
   border-radius: 7px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
-
-/* .mat-card[_ngcontent-nbv-c187] {
-transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
-position: relative;
-padding: 16px;
-min-width: 500px;
-border-radius: 7px;
-} */
-
-img[_ngcontent-fxn-c187] {
-vertical-align: middle;
-border-style: none;
-/* max-width: 500px; */
-width: 500px;
-height: 500px;
-/* max-height: 500px; */
-}
-
-/* element.style {
-margin-right: 100px;
-margin-left: 100px;
-align-content: center;
-flex-flow: wrap;
-box-sizing: border-box;
-display: flex;
-margin: 0px -16px -16px 0px;
-} */
-
 
 .row {
 display: flex;
 flex-wrap: wrap;
-margin-right: 58px;
+margin-right: 0px;
 margin-left: 100px;
 align-items: flex-end;
+padding: 0px 0px 0px 0px;
+
 }
 
-/* .row[_ngcontent-bjn-c187] {
-display: flex;
-flex-wrap: wrap;
-margin-right: 100px;
-margin-left: 100px;
-margin: 60px;
-align-items: flex-end;
-} */
 
 .content[_ngcontent-bng-c396] {
 text-align: -webkit-center;
@@ -203,33 +168,6 @@ text-align: center;
 margin-bottom: -1px;
 }
 
-.mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
-box-sizing: border-box;
-position: relative;
--webkit-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
-/* padding-top: 10px; */
-/* margin-top: 10px; */
-cursor: pointer;
-outline: none;
-border: none;
--webkit-tap-highlight-color: transparent;
-display: inline-block;
-white-space: nowrap;
-text-decoration: none;
-vertical-align: baseline;
-text-align: center;
-margin: 0;
-min-width: 64px;
-/* line-height: 36px; */
-padding: 0px 16px;
-border-radius: 4px;
-overflow: visible;
-/* margin-left: 10px;
-  margin-right: 10px; */
-}
 
 
 
@@ -247,6 +185,10 @@ border-radius: 7px;
 color: white;
 background-color: black;
 margin-top: 15px;
+}
+
+.modal-dialog{
+  max-width: 100px;
 }
 
 
