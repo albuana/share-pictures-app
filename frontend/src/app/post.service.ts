@@ -56,6 +56,7 @@ export class PostService {
     };
   }
   update(post: Post): Observable<Post> {
+    console.log(post._id);
     const url = `${this.url}/${post._id}`;
     return this.http.put<Post>(url, post, this.httpOptions).pipe(
       tap((post: Post) => console.log(`added post w/ id=${post}`)),

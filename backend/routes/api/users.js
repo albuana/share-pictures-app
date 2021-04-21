@@ -10,7 +10,6 @@ router.get('/', async (req, res) => {
     try{
         const users=await Users.find();
         if(!users) res.status(400).json("No users found");
-        console.log(users);
         res.json(users);
     }catch(err){
         res.status(400).json("No users found");
@@ -23,7 +22,6 @@ router.get('/:id', async (req, res) => {
     try{
         const user=await Users.findById(req.params.id);
         if(!user) res.status(400).json("No user found");
-        console.log(user);
         res.json(user);
     }catch(err){
         res.status(400).json("No user found");    }
@@ -35,7 +33,6 @@ router.get('/nick/:nickname', async (req, res) => {
     try{
         const user=await Users.find({nickname:req.params.nickname});
         if(!user) res.status(400).json("No user found");
-        console.log(user);
         res.json(user);
     }catch(err){
         res.status(400).json("No user found");    }
@@ -48,7 +45,6 @@ router.post('/', async (req, res) => {
 
     try{
         const user=await newuser.save();
-        console.log(user);
         if(!user) res.status(400).json("Couldn't save user");
         res.json(user);
     }catch(err){
@@ -60,7 +56,7 @@ router.post('/', async (req, res) => {
 //@desc DELETE a user
 router.delete('/:id', async (req, res) => {
     try{
-        const user=await Users.findById(req.params.id);
+        const user=await Users.findByIdAndDelete(req.params.id);
         if(!user) res.status(400).json("Couldn't delete");
         res.json();
     }catch(err){
@@ -72,9 +68,10 @@ router.delete('/:id', async (req, res) => {
 //@desc PUT a user
 router.put('/:id', async (req, res) => {
     try{
+        console.log(req.body);
         const user=await Users.findByIdAndUpdate(req.params.id, req.body);
-        console.log(user);
         if(!user) res.status(400).json("Couldn't update");
+        console.log(user);
         res.json();
     }catch(err){
         res.status(400).json("Couldn't update");    }
@@ -94,7 +91,6 @@ router.get('/favourites/:id', async (req, res) => {
     try{
         const user=await Users.findById(req.params.id);
         const postsToReturn=await getPosts(user.favourites);
-        console.log(postsToReturn);
         res.json(postsToReturn);
     }catch(err){
         res.status(400).json("Couldn't Get Posts");    }
@@ -103,10 +99,15 @@ router.get('/favourites/:id', async (req, res) => {
 
 async function getPosts (postsId) {
     const postsToReturn=[];
-    for (const post of postsId){
-        const postAux=await Posts.findById(post);
-        postsToReturn.push(postAux);
+    try{
+        for (const post of postsId){
+            const postAux=await Posts.findById(post);
+            postsToReturn.push(postAux);
+        }
+        return postsToReturn;
     }
-    return postsToReturn;
+    catch(err){
+    res.status(400).json("Couldn't Get Posts"); 
   }
+}
 module.exports=router;

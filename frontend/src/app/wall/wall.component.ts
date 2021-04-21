@@ -74,6 +74,7 @@ export class WallComponent implements OnInit {
     this.userService.getUserByNickname(nickname)
       .subscribe(user => {
         this.user = user[0];
+        console.log(this.user.nickname);
         localStorage.setItem('nickname', user[0].nickname);
       })
   }
@@ -94,17 +95,35 @@ export class WallComponent implements OnInit {
   }
 
   logout(): void {
+    this.user = {
+      _id: "",
+      nickname: "",
+      password: "",
+      favourites:[""],
+      likes:[""],
+    };
+    this.users=[];
+    this.posts=[];
+    this.postToShow={
+      _id:"",
+      title:"",
+      description:"",
+      likes:0,
+      user: "", //id não nickname
+      date:new Date,
+      photo:""
+    };
     localStorage.removeItem('nickname');
     this.router.navigate(['login']);
   }
 
   addFavorite(id: string): void {
     this.user.favourites.push(id);
-    this.userService.update(this.user).subscribe();
+    this.userService.update(this.user).subscribe(res=>{this.getPosts();})
   }
   removeFavorite(id: string): void {
     this.user.favourites.splice(this.user.favourites.indexOf(id), 1);
-    this.userService.update(this.user).subscribe();
+    this.userService.update(this.user).subscribe(res=>{this.getPosts();});
   }
 
   isFavorite(id: string): boolean {
@@ -128,7 +147,7 @@ export class WallComponent implements OnInit {
   like(id:string): void {
     this.postToShow.likes++;
     this.user.likes.push(id);
-    this.userService.update(this.user).subscribe(res => {this.updatePost});
+    this.userService.update(this.user).subscribe(res=>{this.updatePost()});
   }
   updatePost() {
     this.postService.update(this.postToShow).subscribe();
@@ -137,7 +156,7 @@ export class WallComponent implements OnInit {
   unlike(id:string): void {
     this.postToShow.likes--;
     this.user.likes.splice(this.user.likes.indexOf(id), 1);
-    this.userService.update(this.user).subscribe(res => {this.updatePost});
+    this.userService.update(this.user).subscribe(res=>{this.updatePost()});
   }
 
   toUpload(): void {

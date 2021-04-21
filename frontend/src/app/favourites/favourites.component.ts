@@ -85,6 +85,23 @@ export class FavouritesComponent implements OnInit {
   }
 
   logout(): void {
+    this.user = {
+      _id: "",
+      nickname: "",
+      password: "",
+      favourites:[""],
+      likes:[""],
+    };
+    this.posts=[];
+    this.postToShow={
+      _id:"",
+      title:"",
+      description:"",
+      likes:0,
+      user: "", //id não nickname
+      date:new Date,
+      photo:""
+    };
     localStorage.removeItem('nickname');
     this.router.navigate(['login']);
   }
