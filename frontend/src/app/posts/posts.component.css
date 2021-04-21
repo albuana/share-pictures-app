@@ -1,5 +1,5 @@
 .example-card {
-    max-width: 1800px;
+    max-width: 500px;
   }
 
 #post{
@@ -16,3 +16,7 @@
     border-radius: 7px;
     text-align: center;
     }
+
+  .card{
+    border: none;
+  }
