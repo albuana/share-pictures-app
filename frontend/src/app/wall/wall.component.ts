@@ -4,10 +4,12 @@ import { PostService } from '../post.service';
 import { Post } from '../post';
 import { User } from '../user';
 import { UserService } from '../user.service';
-
-import {NgbModal, ModalDismissReasons} 
-      from '@ng-bootstrap/ng-bootstrap';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgbModal, ModalDismissReasons }
+  from '@ng-bootstrap/ng-bootstrap';
 import { state } from '@angular/animations';
+import { fromEventPattern } from 'rxjs';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-wall',
@@ -19,8 +21,8 @@ export class WallComponent implements OnInit {
     _id: "",
     nickname: "",
     password: "",
-    favourites:[""],
-    likes:[""],
+    favourites: [""],
+    likes: [""],
   };
   users: User[] = [];
   posts: Post[] = [];
@@ -29,24 +31,24 @@ export class WallComponent implements OnInit {
     _id: "",
     nickname: "",
     password: "",
-    favourites:[""],
-    likes:[""],
+    favourites: [""],
+    likes: [""],
   };
 
   postToShow: Post = {
-    _id:"",
-    title:"",
-    description:"",
-    likes:0,
+    _id: "",
+    title: "",
+    description: "",
+    likes: 0,
     user: "", //id não nickname
-    date:new Date,
-    photo:""
+    date: new Date,
+    photo: ""
   }
 
   title: string = "";
   description: string = "";
   photo: string = "";
-  fileName:string = "";
+  fileName: string = "";
   limit: number = 6;
   closeResult = '';
 
@@ -56,13 +58,13 @@ export class WallComponent implements OnInit {
   dialog: any;
 
 
-  constructor(private router: Router, private userService: UserService, private postService: PostService, private modalService: NgbModal) { 
+  constructor(private router: Router, private userService: UserService, private postService: PostService, private modalService: NgbModal, private MatSnackBar: MatSnackBar) {
     const navigation = this.router.getCurrentNavigation();
-    if(localStorage.getItem('nickname')){
+    if (localStorage.getItem('nickname')) {
       this.getUserByNickname(localStorage.getItem('nickname')!);
 
     }
-    else{
+    else {
       const state = navigation?.extras.state as {
         nickname: string,
       };
@@ -71,12 +73,17 @@ export class WallComponent implements OnInit {
 
   }
 
+  showMessage() {
+    this.MatSnackBar.open('Link Copiado');
+    timer(1200).subscribe(x => {this.MatSnackBar.dismiss(); })
+  }
+
   ngOnInit(): void {
     this.getUsers();
     this.getPosts();
   }
   viewMore(): void {
-    this.limit=this.limit+50;
+    this.limit = this.limit + 50;
   }
   getUserByNickname(nickname: string): void {
     this.userService.getUserByNickname(nickname)
@@ -102,12 +109,12 @@ export class WallComponent implements OnInit {
   }
   getPosts(): void {
     this.postService.getRecentPosts()
-    .subscribe(posts => {
-      this.posts = posts;
-    })
+      .subscribe(posts => {
+        this.posts = posts;
+      })
   }
   toProfile(): void {
-    this.router.navigate(['profile',this.user._id], {state: {id:this.user._id}});
+    this.router.navigate(['profile', this.user._id], { state: { id: this.user._id } });
   }
 
   logout(): void {
@@ -115,21 +122,21 @@ export class WallComponent implements OnInit {
       _id: "",
       nickname: "",
       password: "",
-      favourites:[""],
-      likes:[""],
+      favourites: [""],
+      likes: [""],
     };
-    this.users=[];
-    this.posts=[];
+    this.users = [];
+    this.posts = [];
 
 
-    this.postToShow={
-      _id:"",
-      title:"",
-      description:"",
-      likes:0,
+    this.postToShow = {
+      _id: "",
+      title: "",
+      description: "",
+      likes: 0,
       user: "", //id não nickname
-      date:new Date,
-      photo:""
+      date: new Date,
+      photo: ""
     };
 
 
@@ -139,16 +146,16 @@ export class WallComponent implements OnInit {
 
   addFavorite(id: string): void {
     this.user.favourites.push(id);
-    this.userService.update(this.user).subscribe(res=>{this.getPosts();})
+    this.userService.update(this.user).subscribe(res => { this.getPosts(); })
   }
   removeFavorite(id: string): void {
     this.user.favourites.splice(this.user.favourites.indexOf(id), 1);
-    this.userService.update(this.user).subscribe(res=>{this.getPosts();});
+    this.userService.update(this.user).subscribe(res => { this.getPosts(); });
   }
 
   isFavorite(id: string): boolean {
-    for(let i = 0; i < this.user.favourites.length;i++){
-      if(this.user.favourites[i]==id){
+    for (let i = 0; i < this.user.favourites.length; i++) {
+      if (this.user.favourites[i] == id) {
         return true;
       }
     }
@@ -156,51 +163,51 @@ export class WallComponent implements OnInit {
   }
 
   isLiked(id: string): boolean {
-    for(let i = 0; i < this.user.likes.length;i++){
-      if(this.user.likes[i]==id){
+    for (let i = 0; i < this.user.likes.length; i++) {
+      if (this.user.likes[i] == id) {
         return true;
       }
     }
     return false;
   }
 
-  like(id:string): void {
+  like(id: string): void {
     this.postToShow.likes++;
     this.user.likes.push(id);
-    this.userService.update(this.user).subscribe(res=>{this.updatePost()});
+    this.userService.update(this.user).subscribe(res => { this.updatePost() });
   }
   updatePost() {
     this.postService.update(this.postToShow).subscribe();
   }
 
-  unlike(id:string): void {
+  unlike(id: string): void {
     this.postToShow.likes--;
     this.user.likes.splice(this.user.likes.indexOf(id), 1);
-    this.userService.update(this.user).subscribe(res=>{this.updatePost()});
+    this.userService.update(this.user).subscribe(res => { this.updatePost() });
   }
 
   toUpload(): void {
-    this.router.navigate(['upload'], {state: {id:this.user._id}});
+    this.router.navigate(['upload'], { state: { id: this.user._id } });
   }
 
   toFavourites(): void {
-    this.router.navigate(['favourites'], {state: { id: this.user._id }});
+    this.router.navigate(['favourites'], { state: { id: this.user._id } });
   }
 
   toLikes(): void {
-    this.router.navigate(['likes'], {state: { id: this.user._id }});
+    this.router.navigate(['likes'], { state: { id: this.user._id } });
   }
 
   open(content: any) {
     this.modalService.open(content,
-   {size: 'sm', centered : true}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = 
-         `Dismissed ${this.getDismissReason(reason)}`;
-    });
+      { size: 'sm', centered: true }).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult =
+          `Dismissed ${this.getDismissReason(reason)}`;
+      });
   }
-  
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -243,37 +250,37 @@ export class WallComponent implements OnInit {
     }
 
     if (this.description.length == 0) {
-      const res=confirm("Post doesn't have a description. Are you sure you want to confirm?");
-      if(res){
-        this.flagConfirm==false;
+      const res = confirm("Post doesn't have a description. Are you sure you want to confirm?");
+      if (res) {
+        this.flagConfirm == false;
         this.postService.addPost({ title: this.title, description: this.description, photo: this.photo, user: this.user._id } as Post).subscribe(() => this.getPosts());
       }
       return;
     }
-    else{
-        this.flagConfirm==false;
-        this.postService.addPost({ title: this.title, description: this.description, photo: this.photo, user: this.user._id } as Post).subscribe(() => this.getPosts());
-  }
+    else {
+      this.flagConfirm == false;
+      this.postService.addPost({ title: this.title, description: this.description, photo: this.photo, user: this.user._id } as Post).subscribe(() => this.getPosts());
+    }
   }
 
   toWall(): void {
     this.router.navigate(['/wall'], { state: { nickname: this.user.nickname } });
   }
 
-  recentEvent(): void{
-    if(this.isRecent){
+  recentEvent(): void {
+    if (this.isRecent) {
       this.getPosts();
-      this.isRecent=false;
+      this.isRecent = false;
       console.log("isRecent");
     }
-    else{
+    else {
       this.getPosts();
-      this.isRecent=true;
+      this.isRecent = true;
       console.log("NotRecent");
     }
   }
 
-  mostraFoto(content: any, id:string){
+  mostraFoto(content: any, id: string) {
     this.postService.getPost(id).subscribe(post => this.postToShow = post);
     this.open(content);
 
@@ -282,14 +289,14 @@ export class WallComponent implements OnInit {
 
 
 
-  share(){
+  share() {
     console.log(this.postToShow._id)
     const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';
     selBox.style.top = '0';
     selBox.style.opacity = '0';
-    selBox.value = "http://localhost:3059/posts/"+this.postToShow._id;
+    selBox.value = "http://localhost:3059/posts/" + this.postToShow._id;
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();

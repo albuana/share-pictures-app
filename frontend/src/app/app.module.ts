@@ -24,6 +24,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { LikesComponent } from './likes/likes.component';
 import { PostsComponent } from './posts/posts.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +52,7 @@ import { PostsComponent } from './posts/posts.component';
     DemoMaterialModule,
     FlexLayoutModule,
     MaterialFileInputModule,
+    MatSnackBarModule,
     RouterModule.forRoot([
       {
         path: '',
