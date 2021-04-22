@@ -41,11 +41,10 @@
 		<ng-template #content let-modal>
 			<!-- <div mat-dialog-actions> -->
 			<mat-card class="example-card">
-				<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-					<span aria-hidden="true">
+				<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')" style="margin-left: -9px;
+					margin-top: -9px;">
 						×
-					</span>
-				</button>
+					</button>
 
 				<mat-tab-group mat-align-tabs="center">
 					<mat-tab label="Upload">
