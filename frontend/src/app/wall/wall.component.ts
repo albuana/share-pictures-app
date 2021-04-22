@@ -25,6 +25,14 @@ export class WallComponent implements OnInit {
   users: User[] = [];
   posts: Post[] = [];
 
+  userOfPostToShow: User = {
+    _id: "",
+    nickname: "",
+    password: "",
+    favourites:[""],
+    likes:[""],
+  };
+
   postToShow: Post = {
     _id:"",
     title:"",
@@ -78,6 +86,14 @@ export class WallComponent implements OnInit {
         localStorage.setItem('nickname', user[0].nickname);
       })
   }
+
+  getUserByID(id: string): void {
+    this.userService.getUser(id)
+      .subscribe(userOfPostToShow => {
+        this.userOfPostToShow = userOfPostToShow;
+      })
+  }
+
   getUsers(): void {
     this.userService.getUsers()
       .subscribe(users => {
@@ -104,6 +120,8 @@ export class WallComponent implements OnInit {
     };
     this.users=[];
     this.posts=[];
+
+
     this.postToShow={
       _id:"",
       title:"",
@@ -113,6 +131,8 @@ export class WallComponent implements OnInit {
       date:new Date,
       photo:""
     };
+
+
     localStorage.removeItem('nickname');
     this.router.navigate(['login']);
   }
@@ -256,7 +276,10 @@ export class WallComponent implements OnInit {
   mostraFoto(content: any, id:string){
     this.postService.getPost(id).subscribe(post => this.postToShow = post);
     this.open(content);
+
+
   }
+
 
 
   share(){

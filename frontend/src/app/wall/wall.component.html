@@ -101,7 +101,7 @@
 						<div mat-card-avatar class="example-header-image" style="margin-top: 12px; margin-left: 10px; background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
 						background-size: cover;">
 						</div>
-						<mat-card-subtitle style="margin-top: 20px;">{{postToShow.user}}</mat-card-subtitle>
+						<mat-card-subtitle style="margin-top: 20px;">{{userOfPostToShow.nickname}}</mat-card-subtitle>
 					</mat-card-header>
 					<mat-divider style=" margin-top: 1px;"></mat-divider>
 
@@ -167,7 +167,7 @@
 
 				<div style="align-content: flex-start; margin-top: 40px; margin-bottom: 40px; margin-right: 40px; margin-left: 30px;"
 					*ngFor="let post of posts| slice:0:limit;">
-					<button mat-button (click)="mostraFoto(contentt, post._id)"> <img class="card"
+					<button mat-button (click)="mostraFoto(contentt, post._id); getUserByID(post.user)"> <img class="card"
 							[src]="post.photo" /></button>
 
 				</div>
