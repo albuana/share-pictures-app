@@ -238,4 +238,21 @@ export class FavouritesComponent implements OnInit {
     this.postService.getPost(id).subscribe(post => this.postToShow = post);
     this.open(content);
   }
+
+  share(){
+    console.log(this.postToShow._id)
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = "http://localhost:3059/posts/"+this.postToShow._id;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+  }
+
+
 }
