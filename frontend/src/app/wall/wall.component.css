@@ -220,33 +220,6 @@ mat-card-image:first-child {
 margin-bottom: -1px;
 }
 
-/* .mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
-  box-sizing: border-box;
-  position: relative;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; */
-  /* padding-top: 10px; */
-  /* margin-top: 10px; */
-  /* cursor: pointer;
-  outline: none;
-  border: none;
-  -webkit-tap-highlight-color: transparent;
-  display: inline-block;
-  white-space: nowrap;
-  text-decoration: none;
-  vertical-align: baseline;
-  text-align: center;
-  margin: 0;
-  min-width: 64px; */
-  /* line-height: 36px; */
-  /* padding: 0px 16px;
-  border-radius: 4px;
-  overflow: visible; */
-  /* margin-left: 10px;
-    margin-right: 10px; */
-  /* } */
 
 
 
@@ -257,6 +230,29 @@ margin-left: auto;
 /* padding: 0px 30px 30px 0px; */
 }
 
+.mat-button {
+  box-sizing: border-box;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+  margin: 0;
+  min-width: 58px;
+  line-height: 36px;
+  padding: 0 0px;
+  border-radius: 4px;
+  overflow: visible;
+}
 
 .botao {
 width: 145px;
