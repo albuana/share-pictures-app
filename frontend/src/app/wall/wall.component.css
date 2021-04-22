@@ -118,7 +118,7 @@ svg {
 img {
   vertical-align: middle;
   border-style: none;
-  width: 250px; /* HERE */
+  width: 250px;
 }
 
 .card {

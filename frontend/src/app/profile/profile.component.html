@@ -120,26 +120,27 @@
 
 						<div class="fotos">
 
-							<mat-card class="mat-elevation-z4"
-								style="align-content: center; margin-right: auto; margin-left: auto;">
-								<button type="button" class="close" aria-label="Close"
-									(click)="modal.dismiss('Cross click')">
-									<span aria-hidden="true">
-										×
-									</span>
+							<mat-card class="mat-elevation-z4" style="align-items:center;">
+								<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')" style="margin-right: -4px;
+								margin-top: -9px;">
+									×
 								</button>
-								<div class="card"
+								<!-- <div class="card"
 									style="align-items:center; margin-bottom: 10px; margin-right: 25%; margin-left: 25%;">
-									{{user.nickname}}</div>
-								<div mat-card-title class="card"
-									style="margin-bottom: 0px; margin-right: 25%; margin-left: 25%;">
+									{{user.nickname}}</div> -->
+									<div mat-card-title class="card" show-xs=""
+									style="text-align: center;align-items: stretch;margin: 2px;margin-right: auto;margin-left: auto;margin-top: 15px;max-width: 250px; font: 421 16px/18px Roboto, Helvetica Neue, sans-serif;">
 									{{postToShow.title}}</div>
 								<img mat-card-image style="align-items:center; margin-top: 10px;"
 									[src]="postToShow.photo" />
-								<mat-card-content>
+								<!-- <mat-card-content>
 
 									<p>{{postToShow.description}}</p>
-								</mat-card-content>
+								</mat-card-content> -->
+
+								<div class="card"
+								style="text-align: center;align-items: stretch;margin: 2px;margin-right: auto;margin-left: auto; margin-bottom: 10px; max-width: 250px; font: 400 13px/18px Roboto, Helvetica Neue, sans-serif;">
+								{{postToShow.description}}</div>
 
 								<button *ngIf="isLiked(postToShow._id)" mat-button (click)="unlike(postToShow._id)">
 									<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
