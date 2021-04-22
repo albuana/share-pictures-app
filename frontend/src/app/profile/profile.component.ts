@@ -120,7 +120,7 @@ export class ProfileComponent implements OnInit {
 
   open(content: any) {
     this.modalService.open(content,
-      { ariaLabelledBy: 'modal-basic-title', centered: true }).result.then((result) => {
+      { size: 'sm', centered: true }).result.then((result) => {
         this.closeResult = `Closed with: ${result}`;
       }, (reason) => {
         this.closeResult =
