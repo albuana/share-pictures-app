@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="navbar">
+	<a class="active">Upload <i class="fa fa-fw fa-home"></i></a>
+	<a (click)="toProfile()"> Profile <i class="fa fa-fw fa-user"></i> </a>
+	<a (click)="toWall()"> Wall <i class="fa fa-fw fa-user"></i> </a>
+</div>
+
+<div id="form">
+    <mat-card class="example-card">
+      <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Upload">
+          
+          <mat-form-field class="example-full-width formfield" appearance="fill">
+            <mat-label matSuffix>Title</mat-label>
+            <input matInput placeholder="Title" [(ngModel)]="title" required>
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width formfield" appearance="fill">
+            <mat-label>Description</mat-label>
+            <input matInput #input placeholder="Description" [(ngModel)]="description">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width formfield" appearance="fill">
+            <mat-label>Photo</mat-label>
+            <ngx-mat-file-input #imageInput type="file" accept="image/*" (change)="processFile()">
+            </ngx-mat-file-input>
+        </mat-form-field>
+
+        <button class="botaoLR" mat-raised-button color="primary" (click)="upload()" [disabled]="!available">Confirmar</button>
+
+        </mat-tab>
+    
+      </mat-tab-group>
+  
+  
+    </mat-card>
+  
+  </div>

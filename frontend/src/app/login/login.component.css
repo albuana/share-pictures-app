@@ -1,0 +1,43 @@
+.mat-card {
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+  position: relative;
+  padding: 16px;
+  border-radius: 20px;
+  max-width: 500px;
+}
+
+
+#form {
+  text-align: -webkit-center;
+  padding-top: 320px;
+}
+
+
+.example-form {
+  min-width: 150px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.example-full-width:last-of-type {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.botaoLR {
+  margin-top: 15px;
+  width: 150px;
+}
+
+
+.example1{
+  height: -webkit-fill-available;
+  margin-top: -15%;
+  background: url(https://media.giphy.com/media/sxwk9hGlsULcYm6hDX/giphy.gif);
+}
