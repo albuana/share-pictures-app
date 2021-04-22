@@ -70,10 +70,9 @@
 						<!-- <div mat-dialog-actions> -->
 						<mat-card class="example-card">
 							<button type="button" class="close" aria-label="Close"
-								(click)="modal.dismiss('Cross click')">
-								<span aria-hidden="true">
-									×
-								</span>
+								(click)="modal.dismiss('Cross click')" style="margin-left: -9px;
+					margin-top: -9px;">
+								×
 							</button>
 
 							<mat-tab-group mat-align-tabs="center">
@@ -107,7 +106,7 @@
 									</div>
 									<button class="botaoLR" mat-raised-button color="primary" (click)="upload()"
 										[disabled]="!available"
-										style="display: flex; justify-content: center;">Confirmar</button>
+										style="justify-content: center;">Confirmar</button>
 
 								</mat-tab>
 							</mat-tab-group>
@@ -120,12 +119,13 @@
 
 						<div class="fotos">
 							<mat-card class="mat-elevation-z4" style="align-items:center; position: initial;">
-								<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')" style="margin-right: -4px;
+								<button type="button" class="close" aria-label="Close"
+									(click)="modal.dismiss('Cross click')" style="margin-right: -4px;
 								margin-top: -9px;">
 									×
 								</button>
 								<mat-divider style="margin-top: 16px;"></mat-divider>
-			
+
 								<mat-card-header style=" margin-top: 10px;">
 									<div mat-card-avatar class="example-header-image" style="margin-top: 12px; margin-left: 10px; background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
 									background-size: cover;">
@@ -133,16 +133,16 @@
 									<mat-card-subtitle style="margin-top: 20px;">{{user.nickname}}</mat-card-subtitle>
 								</mat-card-header>
 								<mat-divider style=" margin-top: 1px;"></mat-divider>
-			
+
 								<div mat-card-title class="card"
 									style="text-align: center;align-items: stretch;margin: 2px;margin-right: auto;margin-left: auto;margin-top: 15px;max-width: 250px; font: 421 16px/18px Roboto, Helvetica Neue, sans-serif;">
 									{{postToShow.title}}</div>
-			
+
 								<img mat-card-image style="align-items:center; margin-top: 10px; margin-bottom: 0px;"
 									[src]="postToShow.photo" />
-									<mat-divider style=" margin-top: 0px;"></mat-divider>
-									
-									<div class="card"
+								<mat-divider style=" margin-top: 0px;"></mat-divider>
+
+								<div class="card"
 									style="text-align: center;align-items: stretch;margin: 2px;margin-right: auto;margin-left: auto; margin-top: 10px; max-width: 250px; font: 400 13px/18px Roboto, Helvetica Neue, sans-serif;">
 									{{postToShow.description}}</div>
 								<div></div>
@@ -169,14 +169,16 @@
 											d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z" />
 									</svg>
 								</button>
-								<button *ngIf="isFavorite(postToShow._id)" mat-button (click)="removeFavorite(postToShow._id)">
+								<button *ngIf="isFavorite(postToShow._id)" mat-button
+									(click)="removeFavorite(postToShow._id)">
 									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="red"
 										class="bi bi-heart-fill" viewBox="0 0 16 16">
 										<path fill-rule="evenodd"
 											d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
 									</svg>
 								</button>
-								<button *ngIf="!isFavorite(postToShow._id)" mat-button (click)="addFavorite(postToShow._id)">
+								<button *ngIf="!isFavorite(postToShow._id)" mat-button
+									(click)="addFavorite(postToShow._id)">
 									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
 										class="bi bi-heart" viewBox="0 0 16 16">
 										<path
