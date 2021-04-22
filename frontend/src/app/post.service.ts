@@ -40,7 +40,8 @@ export class PostService {
     return this.http.get<Post[]>(url);
   }
   addPost(post: Post): Observable<Post> {
-    console.log(post);
+    console.log(post.title);
+    console.log(post.description);
     return this.http.post<Post>(this.url, post, this.httpOptions).pipe(
       tap((post: Post) => console.log(`added post w/ id=${post}`)),
       catchError(this.handleError<Post>('addPost'))

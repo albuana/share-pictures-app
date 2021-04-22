@@ -64,7 +64,7 @@ router.get('/:id', async (req, res) => {
 //@ create a post
 router.post('/', async (req, res) => {
     const newpost=new Posts(req.body)
-
+    console.log(newpost);
     try{
         const post=await newpost.save();
         if(!post) res.status(400).json("Couldn't save post");

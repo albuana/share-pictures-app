@@ -14,6 +14,15 @@ export class UploadComponent implements OnInit {
   flagConfirm: boolean = false;
   available: boolean = false;
 
+  postToShow: Post = {
+    _id:"",
+    title:"",
+    description:"",
+    likes:0,
+    user: "", //id não nickname
+    date:new Date,
+    photo:""
+  }
 
   user: User = {
     _id: "",
@@ -22,19 +31,25 @@ export class UploadComponent implements OnInit {
     favourites:[""],
     likes:[""],
   };
-
+  start:number=0;
+  posts: Post[] = [];
+  initial:boolean = true;
+  photos= [""];
+  fileName=[""];
   title: string = "";
   description: string = "";
-  photo: string = "";
-  fileName:string = "";
 
   constructor(private router: Router, private userService: UserService, private postService: PostService) {
     const navigation = this.router.getCurrentNavigation();
-    console.log(navigation?.extras.state)
-    const state = navigation?.extras.state as {
-      id: string,
-    };
-    this.getUser(state.id);
+    if(localStorage.getItem('id')){
+      this.getUser(localStorage.getItem('id')!);
+    }
+    else{
+      const state = navigation?.extras.state as {
+        id: string,
+      };
+      this.getUser(state.id);
+    }
   }
 
 
@@ -42,22 +57,35 @@ export class UploadComponent implements OnInit {
   }
 
   processFile() {
-    const file = (event!.target as HTMLInputElement).files!;
-    const Reader = new FileReader();
-    this.fileName = file[0].name;
-    this.available = true;
-    Reader.readAsDataURL(file[0]);
-    Reader.onload = () => {
-      this.photo = Reader.result as string;
+    const files = (event!.target as HTMLInputElement).files!;
+    let file;
+    for(let i = 0; i < files.length;i++){
+      console.log(files[i]);
+      this.posts.push({
+        _id:"",
+        title:"",
+        description:"",
+        likes:0,
+        user: "", //id não nickname
+        date:new Date,
+        photo:""});
+      this.posts[i].title = files[i].name;
+      let reader = new FileReader();
+      file = files [i];
+      reader.onload = (file) => {
+          this.posts[i].photo = reader.result as string;
+       }
+      reader.readAsDataURL(file)
     }
-
+    this.postToShow=this.posts[0];
+    this.title=this.postToShow.title;
+  }
+  confirmarFolder(): void{
+    this.initial=false;
+    console.log(this.initial);
   }
 
   upload() {
-    if (this.title.length == 0) {
-      this.title = this.fileName;
-    }
-
     if (this.title.length > 100) {
       alert("O titulo é muito grande");
       return;
@@ -75,13 +103,57 @@ export class UploadComponent implements OnInit {
     }
 
     if (this.description.length == 0 && this.flagConfirm == true) {
-      this.postService.addPost({ title: this.title, description: this.description, photo: this.photo, user: this.user._id } as Post).subscribe(() => this.toWall());
+      if(this.start!=this.posts.length-1){
+        this.posts[this.start].title=this.title;
+        this.posts[this.start].description=this.description;
+        this.start++;
+        this.postToShow=this.posts[this.start]
+        this.title=this.postToShow.title;
+        this.description="";
+      }else{
+        this.posts[this.start].title=this.title;
+        this.posts[this.start].description=this.description;
+        this.uploadPhotos();
+      }
 
     }else{
-
-
-    this.postService.addPost({ title: this.title, description: this.description, photo: this.photo, user: this.user._id } as Post).subscribe(() => this.toWall());
+      if(this.start!=this.posts.length-1){
+        this.posts[this.start].title=this.title;
+        this.posts[this.start].description=this.description;
+        this.start++;
+        this.postToShow=this.posts[this.start]
+        this.title=this.postToShow.title;
+        this.description="";
+      }else{
+        this.posts[this.start].title=this.title;
+        this.posts[this.start].description=this.description;
+        this.uploadPhotos();
+      }
     }
+  }
+  uploadPhotos() : void{
+    for(let i = 0; i < this.posts.length;i++){
+      if(i==this.posts.length-1){
+        this.postService.addPost({ title: this.posts[i].title, description: this.posts[i].description, photo: this.posts[i].photo, user: this.user._id } as Post).subscribe(res=>this.restart());
+      }
+      else{
+        this.postService.addPost({ title: this.posts[i].title, description: this.posts[i].description, photo: this.posts[i].photo, user: this.user._id } as Post).subscribe();
+      }
+    }
+  }
+  restart(): void {
+    alert("Fotos Publicadas");
+    this.posts=[]
+    this.postToShow={
+      _id:"",
+      title:"",
+      description:"",
+      likes:0,
+      user: "", //id não nickname
+      date:new Date,
+      photo:""
+    }  
+    this.initial=true;
   }
 
   getUser(id: string): void {
@@ -100,3 +172,5 @@ export class UploadComponent implements OnInit {
     this.router.navigate(['/wall'], { state: { nickname: this.user.nickname } });
   }
 }
+
+
