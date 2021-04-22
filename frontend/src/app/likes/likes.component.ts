@@ -21,6 +21,14 @@ export class LikesComponent implements OnInit {
   };
   posts: Post[] = [];
 
+  userOfPostToShow: User = {
+    _id: "",
+    nickname: "",
+    password: "",
+    favourites:[""],
+    likes:[""],
+  };
+
   postToShow: Post = {
     _id:"",
     title:"",
@@ -63,6 +71,12 @@ export class LikesComponent implements OnInit {
   }
   viewMore(): void {
     this.limit=this.limit+50;
+  }
+  getUserByID(id: string): void {
+    this.userService.getUser(id)
+      .subscribe(userOfPostToShow => {
+        this.userOfPostToShow = userOfPostToShow;
+      })
   }
   getUser(id: string): void {
     console.log("Ola");
