@@ -115,7 +115,10 @@
 					<img mat-card-image style="align-items:center; margin-top: 10px; margin-bottom: 0px;"
 						[src]="postToShow.photo" />
 						<mat-divider style=" margin-top: 0px;"></mat-divider>
-
+						
+						<div class="card"
+						style="text-align: center;align-items: stretch;margin: 2px;margin-right: auto;margin-left: auto; margin-top: 10px; max-width: 250px; font: 400 13px/18px Roboto, Helvetica Neue, sans-serif;">
+						{{postToShow.description}}</div>
 					<div></div>
 					<button *ngIf="isLiked(postToShow._id)" mat-button (click)="unlike(postToShow._id)">
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -156,9 +159,7 @@
 					</button>
 					<!-- <mat-divider style=" margin-top: 0px;"></mat-divider> -->
 
-					<div class="card"
-						style="text-align: center;align-items: stretch;margin: 2px;margin-right: auto;margin-left: auto; margin-bottom: 10px; max-width: 250px; font: 400 13px/18px Roboto, Helvetica Neue, sans-serif;">
-						{{postToShow.description}}</div>
+					
 						
 				</mat-card>
 			</div>
