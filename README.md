@@ -1,7 +1,7 @@
-# Welcome to share-pictures-app code 🖼
-## No Backend:
+## Welcome to share-pictures-app code 🖼
+### No Backend:
 - backend npm run server
-## No Frontend:
+### No Frontend:
 - npm i
 - npm i @angular/flex-layout
 - npm i ngx-material-file-input
